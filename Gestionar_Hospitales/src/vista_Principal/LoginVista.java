@@ -1,6 +1,6 @@
 package vista_Principal;
 
-
+import java.awt.event.ActionListener;
 /**
  *
  * @author Zakaria
@@ -24,8 +24,11 @@ public class LoginVista extends javax.swing.JFrame {
     private void initComponents() {
 
         panel_inicio = new javax.swing.JPanel();
+        l_is = new javax.swing.JLabel();
+        l_gr = new javax.swing.JLabel();
+        l_uv = new javax.swing.JLabel();
         panel_login = new javax.swing.JPanel();
-        l_name = new javax.swing.JLabel();
+        l_salir = new javax.swing.JLabel();
         tf_name = new javax.swing.JTextField();
         sep_name = new javax.swing.JSeparator();
         tf_email = new javax.swing.JTextField();
@@ -35,24 +38,55 @@ public class LoginVista extends javax.swing.JFrame {
         sep_password = new javax.swing.JSeparator();
         tf_password = new javax.swing.JPasswordField();
         b_cerrar = new java.awt.Button();
-        b_Iniciar_sesion1 = new java.awt.Button();
-        l_cerrar = new javax.swing.JLabel();
+        b_iniciar_sesion = new java.awt.Button();
+        l_nombre = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(57, 113, 177));
         setUndecorated(true);
 
         panel_inicio.setBackground(new java.awt.Color(0, 0, 0));
         panel_inicio.setPreferredSize(new java.awt.Dimension(515, 580));
 
+        l_is.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        l_is.setForeground(new java.awt.Color(57, 113, 177));
+        l_is.setText(" Ingenieria de Software II");
+
+        l_gr.setBackground(new java.awt.Color(240, 240, 240));
+        l_gr.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        l_gr.setForeground(new java.awt.Color(51, 52, 54));
+        l_gr.setText(" Grupo 03");
+
+        l_uv.setBackground(new java.awt.Color(240, 240, 240));
+        l_uv.setForeground(new java.awt.Color(51, 52, 54));
+        l_uv.setText("Universitat de Valencia");
+
         javax.swing.GroupLayout panel_inicioLayout = new javax.swing.GroupLayout(panel_inicio);
         panel_inicio.setLayout(panel_inicioLayout);
         panel_inicioLayout.setHorizontalGroup(
             panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGroup(panel_inicioLayout.createSequentialGroup()
+                .addContainerGap(172, Short.MAX_VALUE)
+                .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_inicioLayout.createSequentialGroup()
+                        .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(l_gr, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(l_is, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(122, 122, 122))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_inicioLayout.createSequentialGroup()
+                        .addComponent(l_uv)
+                        .addContainerGap())))
         );
         panel_inicioLayout.setVerticalGroup(
             panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGroup(panel_inicioLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(l_is, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(l_gr)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 460, Short.MAX_VALUE)
+                .addComponent(l_uv)
+                .addContainerGap())
         );
 
         panel_login.setBackground(new java.awt.Color(32, 35, 35));
@@ -60,10 +94,10 @@ public class LoginVista extends javax.swing.JFrame {
         panel_login.setPreferredSize(new java.awt.Dimension(515, 580));
         panel_login.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        l_name.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        l_name.setForeground(new java.awt.Color(57, 113, 177));
-        l_name.setText("X");
-        panel_login.add(l_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 20, 30));
+        l_salir.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        l_salir.setForeground(new java.awt.Color(57, 113, 177));
+        l_salir.setText("X");
+        panel_login.add(l_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 20, 30));
 
         tf_name.setBackground(new java.awt.Color(32, 33, 35));
         tf_name.setForeground(new java.awt.Color(57, 113, 177));
@@ -101,20 +135,20 @@ public class LoginVista extends javax.swing.JFrame {
         b_cerrar.setLabel("Cerrar");
         panel_login.add(b_cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, 340, 50));
 
-        b_Iniciar_sesion1.setBackground(new java.awt.Color(126, 87, 194));
-        b_Iniciar_sesion1.setFont(new java.awt.Font("Century Gothic", 0, 12));
-        b_Iniciar_sesion1.setForeground(new java.awt.Color(255, 255, 255));
-        b_Iniciar_sesion1.setLabel("Iniciar sesión");
-        panel_login.add(b_Iniciar_sesion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 340, 50));
+        b_iniciar_sesion.setBackground(new java.awt.Color(126, 87, 194));
+        b_iniciar_sesion.setFont(new java.awt.Font("Century Gothic", 0, 12));
+        b_iniciar_sesion.setForeground(new java.awt.Color(255, 255, 255));
+        b_iniciar_sesion.setLabel("Iniciar sesión");
+        panel_login.add(b_iniciar_sesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 340, 50));
 
-        l_cerrar.setForeground(new java.awt.Color(57, 113, 177));
-        l_cerrar.setText("Nombre ");
-        l_cerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+        l_nombre.setForeground(new java.awt.Color(57, 113, 177));
+        l_nombre.setText("Nombre ");
+        l_nombre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                l_cerrarMouseClicked(evt);
+                l_nombreMouseClicked(evt);
             }
         });
-        panel_login.add(l_cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 50, -1));
+        panel_login.add(l_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 50, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -139,9 +173,9 @@ public class LoginVista extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void l_cerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_l_cerrarMouseClicked
+    private void l_nombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_l_nombreMouseClicked
         
-    }//GEN-LAST:event_l_cerrarMouseClicked
+    }//GEN-LAST:event_l_nombreMouseClicked
 
     /**
      * @param args the command line arguments
@@ -174,12 +208,15 @@ public class LoginVista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button b_Iniciar_sesion1;
     private java.awt.Button b_cerrar;
-    private javax.swing.JLabel l_cerrar;
+    private java.awt.Button b_iniciar_sesion;
     private javax.swing.JLabel l_email;
-    private javax.swing.JLabel l_name;
+    private javax.swing.JLabel l_gr;
+    private javax.swing.JLabel l_is;
+    private javax.swing.JLabel l_nombre;
     private javax.swing.JLabel l_password;
+    private javax.swing.JLabel l_salir;
+    private javax.swing.JLabel l_uv;
     private javax.swing.JPanel panel_inicio;
     private javax.swing.JPanel panel_login;
     private javax.swing.JSeparator sep_email;
@@ -189,5 +226,4 @@ public class LoginVista extends javax.swing.JFrame {
     private javax.swing.JTextField tf_name;
     private javax.swing.JPasswordField tf_password;
     // End of variables declaration//GEN-END:variables
-
 }
