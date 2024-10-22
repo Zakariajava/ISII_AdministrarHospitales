@@ -31,9 +31,9 @@ public class EnfermeraVista extends javax.swing.JFrame {
         b_cerrar = new java.awt.Button();
         b_administrar_medicamentos = new java.awt.Button();
         b_buscar_medicamentos = new java.awt.Button();
+        l_enfermera = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(611, 433));
 
         jPanel1.setBackground(new java.awt.Color(32, 35, 35));
         jPanel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -61,6 +61,9 @@ public class EnfermeraVista extends javax.swing.JFrame {
         b_buscar_medicamentos.setForeground(new java.awt.Color(255, 255, 255));
         b_buscar_medicamentos.setLabel("Buscar Medicamentos");
         jPanel1.add(b_buscar_medicamentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 340, 50));
+
+        l_enfermera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono2.png"))); // NOI18N
+        jPanel1.add(l_enfermera, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -116,6 +119,7 @@ public class EnfermeraVista extends javax.swing.JFrame {
     private java.awt.Button b_buscar_medicamentos;
     private java.awt.Button b_cerrar;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel l_enfermera;
     private javax.swing.JLabel l_salir;
     // End of variables declaration//GEN-END:variables
 }
