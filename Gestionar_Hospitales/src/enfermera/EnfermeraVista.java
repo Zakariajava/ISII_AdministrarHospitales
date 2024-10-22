@@ -63,7 +63,7 @@ public class EnfermeraVista extends javax.swing.JFrame {
         jPanel1.add(b_buscar_medicamentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 340, 50));
 
         l_enfermera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono2.png"))); // NOI18N
-        jPanel1.add(l_enfermera, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, -1, -1));
+        jPanel1.add(l_enfermera, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
