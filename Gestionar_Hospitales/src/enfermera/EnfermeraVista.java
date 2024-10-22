@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package medico;
+package enfermera;
 
 /**
  *
  * @author Zakaria
  */
-public class MedicoVista extends javax.swing.JFrame {
+public class EnfermeraVista extends javax.swing.JFrame {
 
     /**
-     * Creates new form MedicoVista
+     * Creates new form EnfermeraVista
      */
-    public MedicoVista() {
+    public EnfermeraVista() {
         initComponents();
     }
 
@@ -27,22 +27,17 @@ public class MedicoVista extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        l_icono_medico = new javax.swing.JLabel();
         l_salir = new javax.swing.JLabel();
         b_cerrar = new java.awt.Button();
-        b_ver_pacientes = new java.awt.Button();
-        b_buscar_enfermedades = new java.awt.Button();
+        b_administrar_medicamentos = new java.awt.Button();
+        b_buscar_medicamentos = new java.awt.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(611, 433));
 
         jPanel1.setBackground(new java.awt.Color(32, 35, 35));
         jPanel1.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        l_icono_medico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono1.png"))); // NOI18N
-        l_icono_medico.setText("jLabel2");
-        jPanel1.add(l_icono_medico, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 63, -1));
 
         l_salir.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         l_salir.setForeground(new java.awt.Color(57, 113, 177));
@@ -55,17 +50,17 @@ public class MedicoVista extends javax.swing.JFrame {
         b_cerrar.setLabel("Cerrar");
         jPanel1.add(b_cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 340, 50));
 
-        b_ver_pacientes.setBackground(new java.awt.Color(126, 87, 194));
-        b_ver_pacientes.setFont(new java.awt.Font("Century Gothic", 0, 12));
-        b_ver_pacientes.setForeground(new java.awt.Color(255, 255, 255));
-        b_ver_pacientes.setLabel("Ver Pacientes");
-        jPanel1.add(b_ver_pacientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 340, 50));
+        b_administrar_medicamentos.setBackground(new java.awt.Color(126, 87, 194));
+        b_administrar_medicamentos.setFont(new java.awt.Font("Century Gothic", 0, 12));
+        b_administrar_medicamentos.setForeground(new java.awt.Color(255, 255, 255));
+        b_administrar_medicamentos.setLabel("Administrar Medicamentos");
+        jPanel1.add(b_administrar_medicamentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 340, 50));
 
-        b_buscar_enfermedades.setBackground(new java.awt.Color(126, 87, 194));
-        b_buscar_enfermedades.setFont(new java.awt.Font("Century Gothic", 0, 12));
-        b_buscar_enfermedades.setForeground(new java.awt.Color(255, 255, 255));
-        b_buscar_enfermedades.setLabel("Buscar Enfermedades");
-        jPanel1.add(b_buscar_enfermedades, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 340, 50));
+        b_buscar_medicamentos.setBackground(new java.awt.Color(126, 87, 194));
+        b_buscar_medicamentos.setFont(new java.awt.Font("Century Gothic", 0, 12));
+        b_buscar_medicamentos.setForeground(new java.awt.Color(255, 255, 255));
+        b_buscar_medicamentos.setLabel("Buscar Medicamentos");
+        jPanel1.add(b_buscar_medicamentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 340, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,7 +74,6 @@ public class MedicoVista extends javax.swing.JFrame {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -99,30 +93,29 @@ public class MedicoVista extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MedicoVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EnfermeraVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MedicoVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EnfermeraVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MedicoVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EnfermeraVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MedicoVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EnfermeraVista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MedicoVista().setVisible(true);
+                new EnfermeraVista().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button b_buscar_enfermedades;
+    private java.awt.Button b_administrar_medicamentos;
+    private java.awt.Button b_buscar_medicamentos;
     private java.awt.Button b_cerrar;
-    private java.awt.Button b_ver_pacientes;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel l_icono_medico;
     private javax.swing.JLabel l_salir;
     // End of variables declaration//GEN-END:variables
 }
