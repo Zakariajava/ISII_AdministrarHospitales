@@ -4,6 +4,8 @@
  */
 package medico;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Zakaria
@@ -15,6 +17,7 @@ public class Buscar_EnfermedadesVista extends javax.swing.JFrame {
      */
     public Buscar_EnfermedadesVista() {
         initComponents();
+        ATRAS.setActionCommand("medicoBuscarCerrar");
     }
 
     /**
@@ -157,4 +160,11 @@ public class Buscar_EnfermedadesVista extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
+
+    public void setActionListener(ActionListener actionListener) {
+
+        ATRAS.addActionListener(actionListener);
+
+    }
+
 }

@@ -1,51 +1,152 @@
-
 package controlador;
+
+import enfermera.Buscar_Medicamentos_Vista;
 import modelo.modelo;
 import vista_Principal.LoginVista;
+import enfermera.EnfermeraVista;
+import enfermera.Administrar_Medicamentos_Vista;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+import medico.Buscar_EnfermedadesVista;
+import medico.MedicoVista;
+import medico.Ver_PacientesVista;
+
 /**
  *
  * @author Zakaria Abouhmmadi
  */
-
 public class controlador {
-    private final modelo model;
-    private final LoginVista view;
-    
-    public controlador (modelo model, LoginVista view){
+
+    private modelo model;
+
+    //LOGIN
+    private LoginVista view;
+
+    //ENFERMERA
+    private EnfermeraVista enfermeraVista;
+    private Buscar_Medicamentos_Vista enfermeraBuscar;
+    private Administrar_Medicamentos_Vista enfermeraAdministrar;
+
+    //MEDICO
+    private MedicoVista medicoVista;
+    private Ver_PacientesVista medicoPacientes;
+    private Buscar_EnfermedadesVista medicoBuscar;
+
+    public controlador(modelo model, LoginVista view, EnfermeraVista enfermeraVista, Buscar_Medicamentos_Vista enfermeraBuscar, Administrar_Medicamentos_Vista enfermeraAdministrar,
+            MedicoVista medicoVista, Ver_PacientesVista medicoPacientes, Buscar_EnfermedadesVista medicoBuscar) {
+
         this.model = model;
         this.view = view;
-        
-        view.setActionListener(new ControllerActionListener());
+        this.enfermeraVista = enfermeraVista;
+        this.enfermeraBuscar = enfermeraBuscar;
+        this.enfermeraAdministrar = enfermeraAdministrar;
+        this.medicoVista = medicoVista;
+        this.medicoPacientes = medicoPacientes;
+        this.medicoBuscar = medicoBuscar;
+
+        ControladorActionListener onlyModelActionListener = new ControladorActionListener();
+
+        this.view.setActionListener(onlyModelActionListener);
+        this.enfermeraVista.setActionListener(onlyModelActionListener);
+        //this.enfermeraBuscar.setActionListener(onlyModelActionListener);   Falta que lo haga el wobon de camilo
+        this.enfermeraAdministrar.setActionListener(onlyModelActionListener);
+        this.medicoVista.setActionListener(onlyModelActionListener);
+        this.medicoPacientes.setActionListener(onlyModelActionListener);
+        this.medicoBuscar.setActionListener(onlyModelActionListener);
+
     }
 
-    class ControllerActionListener implements ActionListener{
-           @Override
-           public void actionPerformed(ActionEvent ae){
-               String command = ae.getActionCommand();
-               switch (command){
-               case "ItemLogIn":
-                    usuario = view.getUsuario();
-                    contrasenya = view.getContrasenya();
-                    
-                    if (usuario.isEmpty() || contrasenya.isEmpty()) {
+    class ControladorActionListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+
+            String command = ae.getActionCommand();
+            System.out.print(command);
+
+            switch (command) {
+
+                //LOGIN
+                case "cerrar":
+                    System.exit(0);
+
+                case "iniciar":
+
+                    if (view.getUsuario().isEmpty() || view.getContraseña().isEmpty()) {
                         // Mostrar aviso si algún campo está vacío
                         JOptionPane.showMessageDialog(view, "Todos los campos deben estar llenos", "Aviso", JOptionPane.WARNING_MESSAGE);
                         return; // Salir del método si hay campos vacíos
+                    } else if (view.getUsuario().equals("enfermera") && view.getContraseña().equals("enfermera")) {
+                        // Si el usuario y la contraseña coinciden con "enfermera" y "enfermera", abre la ventana ventanaAdminVista
+
+                        view.hide();
+                        enfermeraVista.setVisible(true);
+
+                    } else if (view.getUsuario().equals("medico") && view.getContraseña().equals("medico")) {
+                        // Si el usuario y la contraseña coinciden con "enfermera" y "enfermera", abre la ventana ventanaAdminVista
+
+                        view.hide();
+                        medicoVista.setVisible(true);
+
                     }
-                    else if (usuario.equals("enfermera") && contrasenya.equals("enfermera")){
-                        /// Si el usuario y la contraseña coinciden con "enfermera" y "enfermera", abre la ventana ventanaAdminVista
-                    }
-                    else {
-                        // Si el usuario y la contraseña no coinciden con ninguna, abre la ventana ventanaClienteVista
-                    }
-                    break;                   
-                case "ItemSalir":
-                    System.exit(0);
+
                     break;
-               }
-           
-           
-           }
+
+                //ENFERMERA   
+                case "enfermeraAdministrar":
+                    enfermeraVista.hide();
+                    enfermeraAdministrar.setVisible(true);
+
+                    break;
+
+                case "enfermeraMedicamentosCerrar":
+                    enfermeraAdministrar.hide();
+                    enfermeraVista.setVisible(true);
+
+                    break;
+
+                /*case "enfermeraBuscar":
+                    enfermeraVista.hide();
+                    enfermeraBuscar.setVisible(true);
+                    break;*/
+                case "enfermeraCerrar":
+                    enfermeraVista.hide();
+                    view.setVisible(true);
+
+                    break;
+
+                //MEDICO
+                case "medicoBuscar":
+                    medicoVista.hide();
+                    medicoBuscar.setVisible(true);
+
+                    break;
+
+                case "medicoBuscarCerrar":
+                    medicoBuscar.hide();
+                    medicoVista.setVisible(true);
+
+                    break;
+                case "medicoPacientes":
+                    medicoPacientes.setVisible(true);
+                    medicoVista.hide();
+
+                    break;
+
+                case "medicoPacientesCerrar":
+                    medicoPacientes.hide();
+                    medicoVista.setVisible(true);
+
+                    break;
+
+                case "medicoCerrar":
+                    medicoVista.hide();
+                    view.setVisible(true);
+
+            }
+
+        }
     }
 
-    }
+}

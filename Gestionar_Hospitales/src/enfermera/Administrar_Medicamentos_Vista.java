@@ -4,6 +4,8 @@
  */
 package enfermera;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Zakaria
@@ -15,6 +17,10 @@ public class Administrar_Medicamentos_Vista extends javax.swing.JFrame {
      */
     public Administrar_Medicamentos_Vista() {
         initComponents();
+        
+        SALIR.setActionCommand("enfermeraMedicamentosCerrar");
+        
+        
     }
 
     /**
@@ -165,4 +171,10 @@ public class Administrar_Medicamentos_Vista extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+        public void setActionListener(ActionListener actionListener) {
+
+        SALIR.addActionListener(actionListener);
+
+    }
+
 }

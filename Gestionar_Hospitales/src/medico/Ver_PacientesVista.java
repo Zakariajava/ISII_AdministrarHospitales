@@ -4,6 +4,8 @@
  */
 package medico;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Zakaria
@@ -14,7 +16,10 @@ public class Ver_PacientesVista extends javax.swing.JFrame {
      * Creates new form Ver_PacientesVista
      */
     public Ver_PacientesVista() {
+        
         initComponents();
+        
+        SALIR.setActionCommand("medicoPacientesCerrar");
     }
 
     /**
@@ -173,4 +178,11 @@ public class Ver_PacientesVista extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    public void setActionListener(ActionListener actionListener) {
+        
+        SALIR.addActionListener(actionListener);
+        
+    }
+    
 }

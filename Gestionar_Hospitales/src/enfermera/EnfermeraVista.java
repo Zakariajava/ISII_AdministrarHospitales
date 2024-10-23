@@ -4,6 +4,8 @@
  */
 package enfermera;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Zakaria
@@ -14,7 +16,12 @@ public class EnfermeraVista extends javax.swing.JFrame {
      * Creates new form EnfermeraVista
      */
     public EnfermeraVista() {
+
         initComponents();
+
+        b_administrar_medicamentos.setActionCommand("enfermeraAdministrar");
+        b_buscar_medicamentos.setActionCommand("enfermeraBuscar");
+        b_cerrar.setActionCommand("enfermeraCerrar");
     }
 
     /**
@@ -54,6 +61,11 @@ public class EnfermeraVista extends javax.swing.JFrame {
         b_administrar_medicamentos.setFont(new java.awt.Font("Century Gothic", 0, 12));
         b_administrar_medicamentos.setForeground(new java.awt.Color(255, 255, 255));
         b_administrar_medicamentos.setLabel("Administrar Medicamentos");
+        b_administrar_medicamentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_administrar_medicamentosActionPerformed(evt);
+            }
+        });
         jPanel1.add(b_administrar_medicamentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 340, 50));
 
         b_buscar_medicamentos.setBackground(new java.awt.Color(126, 87, 194));
@@ -78,6 +90,10 @@ public class EnfermeraVista extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void b_administrar_medicamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_administrar_medicamentosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_b_administrar_medicamentosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -112,8 +128,8 @@ public class EnfermeraVista extends javax.swing.JFrame {
                 new EnfermeraVista().setVisible(true);
             }
         });
-    }
 
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button b_administrar_medicamentos;
     private java.awt.Button b_buscar_medicamentos;
@@ -122,4 +138,13 @@ public class EnfermeraVista extends javax.swing.JFrame {
     private javax.swing.JLabel l_enfermera;
     private javax.swing.JLabel l_salir;
     // End of variables declaration//GEN-END:variables
+
+    public void setActionListener(ActionListener actionListener) {
+
+        b_administrar_medicamentos.addActionListener(actionListener);
+        b_buscar_medicamentos.addActionListener(actionListener);
+        b_cerrar.addActionListener(actionListener);
+
+    }
+
 }

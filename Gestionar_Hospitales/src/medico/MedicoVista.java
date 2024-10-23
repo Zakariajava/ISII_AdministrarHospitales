@@ -4,6 +4,8 @@
  */
 package medico;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Zakaria
@@ -15,6 +17,9 @@ public class MedicoVista extends javax.swing.JFrame {
      */
     public MedicoVista() {
         initComponents();
+        b_buscar_enfermedades.setActionCommand("medicoBuscar");
+        b_cerrar.setActionCommand("medicoCerrar");
+        b_ver_pacientes.setActionCommand("medicoPacientes");
     }
 
     /**
@@ -125,4 +130,13 @@ public class MedicoVista extends javax.swing.JFrame {
     private javax.swing.JLabel l_icono_medico;
     private javax.swing.JLabel l_salir;
     // End of variables declaration//GEN-END:variables
+
+    public void setActionListener(ActionListener actionListener) {
+
+        b_buscar_enfermedades.addActionListener(actionListener);
+        b_cerrar.addActionListener(actionListener);
+        b_ver_pacientes.addActionListener(actionListener);
+
+    }
+
 }

@@ -1,6 +1,7 @@
 package vista_Principal;
 
 import java.awt.event.ActionListener;
+
 /**
  *
  * @author Zakaria
@@ -12,6 +13,9 @@ public class LoginVista extends javax.swing.JFrame {
      */
     public LoginVista() {
         initComponents();
+
+        b_cerrar.setActionCommand("cerrar");
+        b_iniciar_sesion.setActionCommand("iniciar");
     }
 
     /**
@@ -174,7 +178,7 @@ public class LoginVista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void l_nombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_l_nombreMouseClicked
-        
+
     }//GEN-LAST:event_l_nombreMouseClicked
 
     /**
@@ -204,7 +208,7 @@ public class LoginVista extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -226,4 +230,30 @@ public class LoginVista extends javax.swing.JFrame {
     private javax.swing.JTextField tf_name;
     private javax.swing.JPasswordField tf_password;
     // End of variables declaration//GEN-END:variables
+
+    public String getUsuario() {
+
+        return tf_name.getText();
+
+    }
+
+    public String getContraseña() {
+
+        return tf_password.getText();
+
+    }
+
+    public String getEmail() {
+
+        return tf_email.getText();
+
+    }
+
+    public void setActionListener(ActionListener actionListener) {
+
+        b_cerrar.addActionListener(actionListener);
+        b_iniciar_sesion.addActionListener(actionListener);
+
+    }
+
 }
