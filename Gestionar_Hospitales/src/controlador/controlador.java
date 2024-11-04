@@ -61,7 +61,7 @@ public class controlador {
         this.medicoPacientes.getTable().addMouseListener(new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {
-            if (e.getClickCount() == 1) {
+            if (e.getClickCount() == 2) {
                 int selectedRow = medicoPacientes.getTable().getSelectedRow();
                 if (selectedRow != -1) {
                     
