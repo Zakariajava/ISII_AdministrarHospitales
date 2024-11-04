@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import medico.Buscar_EnfermedadesVista;
 import medico.MedicoVista;
 import medico.Ver_PacientesVista;
+import medico.VerHistorialPaciente;
 
 /**
  *
@@ -41,7 +42,6 @@ public class GestionadorHospitales {
         Buscar_EnfermedadesVista medicoBuscar = new Buscar_EnfermedadesVista();
         MedicoVista medicoVista = new MedicoVista();
         Ver_PacientesVista medicoPacientes = new Ver_PacientesVista();
-
         //CONTROLLER
         controlador controller = new controlador(model, vista, enfermeraVista, enfermeraBuscar, enfermeraAdministrar, medicoVista, medicoPacientes, medicoBuscar);
 

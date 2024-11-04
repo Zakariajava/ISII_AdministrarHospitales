@@ -8,10 +8,12 @@ import enfermera.Administrar_Medicamentos_Vista;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import medico.Buscar_EnfermedadesVista;
 import medico.MedicoVista;
 import medico.Ver_PacientesVista;
-
+import medico.VerHistorialPaciente;
 /**
  *
  * @author Zakaria Abouhmmadi
@@ -32,7 +34,8 @@ public class controlador {
     private MedicoVista medicoVista;
     private Ver_PacientesVista medicoPacientes;
     private Buscar_EnfermedadesVista medicoBuscar;
-
+    private VerHistorialPaciente historialVista;
+    
     public controlador(modelo model, LoginVista view, EnfermeraVista enfermeraVista, Buscar_Medicamentos_Vista enfermeraBuscar, Administrar_Medicamentos_Vista enfermeraAdministrar,
             MedicoVista medicoVista, Ver_PacientesVista medicoPacientes, Buscar_EnfermedadesVista medicoBuscar) {
 
@@ -44,19 +47,35 @@ public class controlador {
         this.medicoVista = medicoVista;
         this.medicoPacientes = medicoPacientes;
         this.medicoBuscar = medicoBuscar;
-
+        
         ControladorActionListener onlyModelActionListener = new ControladorActionListener();
 
         this.view.setActionListener(onlyModelActionListener);
         this.enfermeraVista.setActionListener(onlyModelActionListener);
-        //this.enfermeraBuscar.setActionListener(onlyModelActionListener);   Falta que lo haga el wobon de camilo
+        this.enfermeraBuscar.setActionListener(onlyModelActionListener);
         this.enfermeraAdministrar.setActionListener(onlyModelActionListener);
         this.medicoVista.setActionListener(onlyModelActionListener);
         this.medicoPacientes.setActionListener(onlyModelActionListener);
         this.medicoBuscar.setActionListener(onlyModelActionListener);
+        
+        this.medicoPacientes.getTable().addMouseListener(new MouseAdapter() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            if (e.getClickCount() == 1) {
+                int selectedRow = medicoPacientes.getTable().getSelectedRow();
+                if (selectedRow != -1) {
+                    
+                    String nombrePaciente = (String) medicoPacientes.getTable().getValueAt(selectedRow, 0);
 
+                    VerHistorialPaciente historialVista = new VerHistorialPaciente();
+                    historialVista.setVisible(true);
+                }
+            }
+        }
+    });
     }
-
+    
+    
     class ControladorActionListener implements ActionListener {
 
         @Override
@@ -106,10 +125,18 @@ public class controlador {
 
                     break;
 
-                /*case "enfermeraBuscar":
+                case "enfermeraBuscar":
                     enfermeraVista.hide();
                     enfermeraBuscar.setVisible(true);
-                    break;*/
+                    
+                    break;
+                    
+                case "enfermeraBuscarCerrar":
+                    enfermeraBuscar.hide();
+                    enfermeraVista.setVisible(true);
+                    
+                    break;
+                    
                 case "enfermeraCerrar":
                     enfermeraVista.hide();
                     view.setVisible(true);
@@ -143,10 +170,10 @@ public class controlador {
                 case "medicoCerrar":
                     medicoVista.hide();
                     view.setVisible(true);
-
+ 
             }
 
         }
     }
-
+    
 }

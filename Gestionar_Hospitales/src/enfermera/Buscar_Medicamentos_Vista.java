@@ -4,6 +4,8 @@
  */
 package enfermera;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Zakaria
@@ -15,6 +17,7 @@ public class Buscar_Medicamentos_Vista extends javax.swing.JFrame {
      */
     public Buscar_Medicamentos_Vista() {
         initComponents();
+        ATRAS.setActionCommand("enfermeraBuscarCerrar");
     }
 
     /**
@@ -45,7 +48,7 @@ public class Buscar_Medicamentos_Vista extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("N:ombre enfermedad");
+        jLabel1.setText("N:ombre medicamento");
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Medicamento 1", "Medicamento 2", "Medicamento 3", "Medicamento 4", "Medicamento 5" };
@@ -142,6 +145,8 @@ public class Buscar_Medicamentos_Vista extends javax.swing.JFrame {
             }
         });
     }
+    
+      
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ATRAS;
@@ -151,4 +156,10 @@ public class Buscar_Medicamentos_Vista extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    public void setActionListener(ActionListener actionListener) {
+
+        ATRAS.addActionListener(actionListener);
+
+    }
 }

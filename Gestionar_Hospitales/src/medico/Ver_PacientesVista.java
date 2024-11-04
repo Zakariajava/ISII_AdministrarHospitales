@@ -5,6 +5,7 @@
 package medico;
 
 import java.awt.event.ActionListener;
+import javax.swing.JTable;
 
 /**
  *
@@ -183,6 +184,16 @@ public class Ver_PacientesVista extends javax.swing.JFrame {
         
         SALIR.addActionListener(actionListener);
         
+    }
+    
+    public void addTableMouseListener(java.awt.event.MouseListener mouseListener) {
+        
+        jTable1.addMouseListener(mouseListener);
+    }
+
+    public JTable getTable() {
+        
+        return jTable1;
     }
     
 }
