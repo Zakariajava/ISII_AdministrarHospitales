@@ -5,6 +5,10 @@
 package enfermera;
 
 import java.awt.event.ActionListener;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import medicamentos.Medicamentos;
 
 /**
  *
@@ -176,5 +180,30 @@ public class Administrar_Medicamentos_Vista extends javax.swing.JFrame {
         SALIR.addActionListener(actionListener);
 
     }
+       
+        public void mostrarMedicamentos(List<Medicamentos> medicamentos) {
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
 
+            for (Medicamentos medicamento : medicamentos) {
+                Object[] rowData = { medicamento.getNombre(), medicamento.getStock() };
+                model.addRow(rowData);
+            }
+        }
+
+        
+        public void verificarStock(List<Medicamentos> medicamentos) {
+            boolean stockBajo = false;
+
+            for (Medicamentos medicamento : medicamentos) {
+                if (medicamento.getStock() < 50) {
+                    stockBajo = true;
+                    break;
+                }
+            }
+            if (stockBajo) {
+                JOptionPane.showMessageDialog(this, "¡Atención! Algunos medicamentos tienen un stock inferior a 50.", 
+                    "Stock Bajo", JOptionPane.WARNING_MESSAGE);
+            }
+        }
 }

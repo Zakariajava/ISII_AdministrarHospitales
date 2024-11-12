@@ -117,7 +117,7 @@ public class controlador {
                 case "enfermeraAdministrar":
                     enfermeraVista.hide();
                     enfermeraAdministrar.setVisible(true);
-
+                    enfermeraAdministrar.verificarStock(main.GestionadorHospitales.getMedicamentos());
                     break;
 
                 case "enfermeraMedicamentosCerrar":

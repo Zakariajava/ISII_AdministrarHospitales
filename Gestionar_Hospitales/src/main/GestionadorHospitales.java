@@ -8,6 +8,8 @@ import modelo.modelo;
 import vista_Principal.LoginVista;
 import enfermera.EnfermeraVista;
 import enfermera.Administrar_Medicamentos_Vista;
+import java.util.ArrayList;
+import java.util.List;
 import medicamentos.Medicamentos;
 import medico.Buscar_EnfermedadesVista;
 import medico.MedicoVista;
@@ -24,6 +26,9 @@ public class GestionadorHospitales {
     /**
      * @param args the command line arguments
      */
+    
+    private static List<Medicamentos> medicamentos = new ArrayList<>();
+    
     public static void main(String[] args) {
 
         //MOEDLO
@@ -58,6 +63,17 @@ public class GestionadorHospitales {
         Medicamentos paracetamol = new Medicamentos("Paracetamol", 100);
         Medicamentos ibuprofeno = new Medicamentos("Ibuprofeno", 49);
 
+        //List<Medicamentos> medicamentos = new ArrayList<>();
+        medicamentos.add(paracetamol);
+        medicamentos.add(ibuprofeno);
+        
+        
+        enfermeraAdministrar.mostrarMedicamentos(medicamentos);
+        
+        
     }
 
+        public static List<Medicamentos> getMedicamentos() {
+        return medicamentos;
+    }
 }
