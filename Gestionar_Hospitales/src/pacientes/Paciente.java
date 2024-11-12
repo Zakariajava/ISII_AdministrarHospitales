@@ -9,12 +9,14 @@ public class Paciente {
     String nombre;
     String apellidos;
     String sintomas;
+    int habitacion;
 
-    public Paciente(String nombre, String apellidos, String sintomas) {
+    public Paciente(String nombre, String apellidos, String sintomas, int habitacion) {
 
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.sintomas = sintomas;
+        this.habitacion = habitacion;
 
     }
 

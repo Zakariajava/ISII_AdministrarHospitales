@@ -48,12 +48,12 @@ public class GestionadorHospitales {
 
         //BD
         //PACIENTES
-        Paciente paciente1 = new Paciente("Pepe", "Gonzalez Martinez", "Dolor de cabeza");
-        Paciente paciente2 = new Paciente("Marcos", "Juarez Alcanyiz", "Dolor de garganta");
-        Paciente paciente3 = new Paciente("Camilo", "Restrepo Messa", "Tos seca");
-        Paciente paciente4 = new Paciente("Jose", "Pascal Gomez", "Dolor de barriga");
-        Paciente paciente5 = new Paciente("Pedro", "De la Mesa Redondo", "Dolor de cabeza");
-        Paciente paciente6 = new Paciente("Maria", "Pascal Gomez", "Vista muy cansada");
+        Paciente paciente1 = new Paciente("Pepe", "Gonzalez Martinez", "Dolor de cabeza", 4);
+        Paciente paciente2 = new Paciente("Marcos", "Juarez Alcanyiz", "Dolor de garganta", 5);
+        Paciente paciente3 = new Paciente("Camilo", "Restrepo Messa", "Tos seca", 9);
+        Paciente paciente4 = new Paciente("Jose", "Pascal Gomez", "Dolor de barriga", 15);
+        Paciente paciente5 = new Paciente("Pedro", "De la Mesa Redondo", "Dolor de cabeza", 19);
+        Paciente paciente6 = new Paciente("Maria", "Pascal Gomez", "Vista muy cansada", 0);
         //MEDICAMENTOS
         Medicamentos paracetamol = new Medicamentos("Paracetamol", 100);
         Medicamentos ibuprofeno = new Medicamentos("Ibuprofeno", 49);
