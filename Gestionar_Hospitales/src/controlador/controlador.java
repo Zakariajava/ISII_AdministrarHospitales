@@ -89,6 +89,7 @@ public class controlador {
                 //LOGIN
                 case "cerrar":
                     System.exit(0);
+                    break;
 
                 case "iniciar":
 
