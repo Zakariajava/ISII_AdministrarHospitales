@@ -34,5 +34,6 @@ medico: Módulo para la interfaz y funcionalidades específicas de los médicos.
 modelo: Contiene el modelo de datos y la gestión de bases de datos.
 vista_Principal: Interfaz gráfica de inicio, que permite la autenticación de usuarios y navegación inicial.
 imagenes: Archivos visuales que soportan la interfaz del sistema.
+
 Actualizaciones
 Este README se actualizará conforme se desarrollen nuevas funcionalidades o se hagan ajustes en el proyecto.
