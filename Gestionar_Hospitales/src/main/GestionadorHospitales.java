@@ -28,7 +28,7 @@ public class GestionadorHospitales {
      */
     
     private static List<Medicamentos> medicamentos = new ArrayList<>();
-    
+    private static List<Paciente> pacientes = new ArrayList<>();
     public static void main(String[] args) {
 
         //MOEDLO
@@ -67,13 +67,24 @@ public class GestionadorHospitales {
         medicamentos.add(paracetamol);
         medicamentos.add(ibuprofeno);
         
+        pacientes.add(paciente1);
+        pacientes.add(paciente2);
+        pacientes.add(paciente3);
+        pacientes.add(paciente4);
+        pacientes.add(paciente5);
+        pacientes.add(paciente6);
         
+        medicoPacientes.mostrarPacientes(pacientes);
         enfermeraAdministrar.mostrarMedicamentos(medicamentos);
         
         
     }
-
-        public static List<Medicamentos> getMedicamentos() {
+    
+    public static List<Paciente> getPacientes() {
+        return pacientes;
+    }
+    
+    public static List<Medicamentos> getMedicamentos() {
         return medicamentos;
     }
 }

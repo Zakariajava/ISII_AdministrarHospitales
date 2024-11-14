@@ -34,5 +34,12 @@ public class Paciente {
 
         return sintomas;
     }
+    
+    public int getHabitacion() {
+
+        return habitacion;
+    }
+
+    
 
 }

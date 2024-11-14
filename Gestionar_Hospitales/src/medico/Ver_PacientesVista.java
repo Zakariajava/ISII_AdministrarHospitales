@@ -5,7 +5,10 @@
 package medico;
 
 import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import pacientes.Paciente;
 
 /**
  *
@@ -55,18 +58,18 @@ public class Ver_PacientesVista extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Nombre y Apellidos", "Habitación", "Síntomas"
+                "Nombre", "Apellidos", "Habitación", "Síntomas"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -78,9 +81,12 @@ public class Ver_PacientesVista extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(0).setMinWidth(200);
             jTable1.getColumnModel().getColumn(0).setPreferredWidth(200);
             jTable1.getColumnModel().getColumn(0).setMaxWidth(200);
-            jTable1.getColumnModel().getColumn(1).setMinWidth(80);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(80);
-            jTable1.getColumnModel().getColumn(1).setMaxWidth(80);
+            jTable1.getColumnModel().getColumn(1).setMinWidth(200);
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(200);
+            jTable1.getColumnModel().getColumn(1).setMaxWidth(200);
+            jTable1.getColumnModel().getColumn(2).setMinWidth(80);
+            jTable1.getColumnModel().getColumn(2).setPreferredWidth(80);
+            jTable1.getColumnModel().getColumn(2).setMaxWidth(80);
         }
 
         jLabel1.setFont(new java.awt.Font("Artifakt Element Medium", 3, 18)); // NOI18N
@@ -196,4 +202,13 @@ public class Ver_PacientesVista extends javax.swing.JFrame {
         return jTable1;
     }
     
+    public void mostrarPacientes(List<Paciente> pacientes) {
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+
+            for (Paciente paciente : pacientes) {
+                Object[] rowData = { paciente.getNombre(),paciente.getApellidos(), paciente.getHabitacion() ,paciente.getSintomas()};
+                model.addRow(rowData);
+            }
+        }
 }
