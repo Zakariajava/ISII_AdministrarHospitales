@@ -110,6 +110,9 @@ public class controlador {
                         medicoVista.setVisible(true);
 
                     }
+                    else {
+                        JOptionPane.showMessageDialog(view, "El nombre o la contraseña es incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
 
                     break;
 
