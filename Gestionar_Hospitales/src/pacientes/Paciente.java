@@ -6,18 +6,22 @@ package pacientes;
  */
 public class Paciente {
 
-    String nombre;
-    String apellidos;
-    String sintomas;
-    int habitacion;
+    private String nombre;
+    private String apellidos;
+    private String sintomas;
+    private String medicamento;
+    private String dosis;
+    private String frecuencia;
+    private int habitacion;
 
-    public Paciente(String nombre, String apellidos, String sintomas, int habitacion) {
-
+    public Paciente(String nombre, String apellidos, String sintomas, int habitacion, String medicamento, String dosis, String frecuencia) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.sintomas = sintomas;
         this.habitacion = habitacion;
-
+        this.medicamento = medicamento;
+        this.dosis = dosis;
+        this.frecuencia = frecuencia;
     }
 
     public String getNombre() {
@@ -34,12 +38,59 @@ public class Paciente {
 
         return sintomas;
     }
-    
+
+    public String getMedicamento() {
+
+        return medicamento;
+    }
+
+    public String getDosis() {
+
+        return dosis;
+    }
+
+    public String getFrecuencia() {
+
+        return frecuencia;
+    }
+
     public int getHabitacion() {
 
         return habitacion;
     }
 
-    
+    public void setNombre(String nombre) {
 
+        this.nombre = nombre;
+    }
+
+    public void setApellidos(String apellidos) {
+
+        this.apellidos = apellidos;
+    }
+
+    public void setSintomas(String sintomas) {
+
+        this.sintomas = sintomas;
+    }
+
+    public void setMedicamento(String medicamento) {
+
+        this.medicamento = medicamento;
+    }
+
+    public void setDosis(String dosis) {
+
+        this.dosis = dosis;
+    }
+
+    public void setFrecuencia(String frecuencia) {
+
+        this.frecuencia = frecuencia;
+    }
+
+    public void setHabitacion(int habitacion) {
+
+        this.habitacion = habitacion;
+    }
 }

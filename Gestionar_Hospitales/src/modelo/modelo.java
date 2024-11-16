@@ -49,4 +49,10 @@ public final class modelo {
             return "desconocido";
         }
     }
+    
+    //COSAS DEL MODELO QUE SI TENEMOS IDEA DE QUE SON
+    
+    
+    
+    
 }

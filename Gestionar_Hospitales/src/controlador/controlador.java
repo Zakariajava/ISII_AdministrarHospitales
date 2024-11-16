@@ -14,6 +14,7 @@ import medico.Buscar_EnfermedadesVista;
 import medico.MedicoVista;
 import medico.Ver_PacientesVista;
 import medico.VerHistorialPaciente;
+
 /**
  *
  * @author Zakaria Abouhmmadi
@@ -35,7 +36,7 @@ public class controlador {
     private Ver_PacientesVista medicoPacientes;
     private Buscar_EnfermedadesVista medicoBuscar;
     private VerHistorialPaciente historialVista;
-    
+
     public controlador(modelo model, LoginVista view, EnfermeraVista enfermeraVista, Buscar_Medicamentos_Vista enfermeraBuscar, Administrar_Medicamentos_Vista enfermeraAdministrar,
             MedicoVista medicoVista, Ver_PacientesVista medicoPacientes, Buscar_EnfermedadesVista medicoBuscar) {
 
@@ -47,7 +48,7 @@ public class controlador {
         this.medicoVista = medicoVista;
         this.medicoPacientes = medicoPacientes;
         this.medicoBuscar = medicoBuscar;
-        
+
         ControladorActionListener onlyModelActionListener = new ControladorActionListener();
 
         this.view.setActionListener(onlyModelActionListener);
@@ -57,25 +58,24 @@ public class controlador {
         this.medicoVista.setActionListener(onlyModelActionListener);
         this.medicoPacientes.setActionListener(onlyModelActionListener);
         this.medicoBuscar.setActionListener(onlyModelActionListener);
-        
-        this.medicoPacientes.getTable().addMouseListener(new MouseAdapter() {
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            if (e.getClickCount() == 2) {
-                int selectedRow = medicoPacientes.getTable().getSelectedRow();
-                if (selectedRow != -1) {
-                    
-                    String nombrePaciente = (String) medicoPacientes.getTable().getValueAt(selectedRow, 0);
 
-                    VerHistorialPaciente historialVista = new VerHistorialPaciente();
-                    historialVista.setVisible(true);
+        this.medicoPacientes.getTable().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    int selectedRow = medicoPacientes.getTable().getSelectedRow();
+                    if (selectedRow != -1) {
+
+                        String nombrePaciente = (String) medicoPacientes.getTable().getValueAt(selectedRow, 0);
+
+                        VerHistorialPaciente historialVista = new VerHistorialPaciente();
+                        historialVista.setVisible(true);
+                    }
                 }
             }
-        }
-    });
+        });
     }
-    
-    
+
     class ControladorActionListener implements ActionListener {
 
         @Override
@@ -109,8 +109,7 @@ public class controlador {
                         view.hide();
                         medicoVista.setVisible(true);
 
-                    }
-                    else {
+                    } else {
                         JOptionPane.showMessageDialog(view, "El nombre o la contraseña es incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
                     }
 
@@ -132,15 +131,15 @@ public class controlador {
                 case "enfermeraBuscar":
                     enfermeraVista.hide();
                     enfermeraBuscar.setVisible(true);
-                    
+
                     break;
-                    
+
                 case "enfermeraBuscarCerrar":
                     enfermeraBuscar.hide();
                     enfermeraVista.setVisible(true);
-                    
+
                     break;
-                    
+
                 case "enfermeraCerrar":
                     enfermeraVista.hide();
                     view.setVisible(true);
@@ -174,10 +173,9 @@ public class controlador {
                 case "medicoCerrar":
                     medicoVista.hide();
                     view.setVisible(true);
- 
-            }
 
+            }
         }
     }
-    
 }
+
