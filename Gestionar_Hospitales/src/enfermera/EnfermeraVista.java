@@ -19,8 +19,9 @@ public class EnfermeraVista extends javax.swing.JFrame {
 
         initComponents();
 
-        b_administrar_medicamentos.setActionCommand("enfermeraAdministrar");
-        b_buscar_medicamentos.setActionCommand("enfermeraBuscar");
+        inventarioMedicamentos.setActionCommand("enfermeraInventario");
+        b_buscar_medicamentos1.setActionCommand("enfermeraBuscar");
+        administrarMedicamentos.setActionCommand("enfermeraAdministrar");
         b_cerrar.setActionCommand("enfermeraCerrar");
     }
 
@@ -36,9 +37,10 @@ public class EnfermeraVista extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         l_salir = new javax.swing.JLabel();
         b_cerrar = new java.awt.Button();
-        b_administrar_medicamentos = new java.awt.Button();
-        b_buscar_medicamentos = new java.awt.Button();
+        inventarioMedicamentos = new java.awt.Button();
+        administrarMedicamentos = new java.awt.Button();
         l_enfermera = new javax.swing.JLabel();
+        b_buscar_medicamentos1 = new java.awt.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,25 +59,41 @@ public class EnfermeraVista extends javax.swing.JFrame {
         b_cerrar.setLabel("Cerrar");
         jPanel1.add(b_cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 340, 50));
 
-        b_administrar_medicamentos.setBackground(new java.awt.Color(126, 87, 194));
-        b_administrar_medicamentos.setFont(new java.awt.Font("Century Gothic", 0, 12));
-        b_administrar_medicamentos.setForeground(new java.awt.Color(255, 255, 255));
-        b_administrar_medicamentos.setLabel("Administrar Medicamentos");
-        b_administrar_medicamentos.addActionListener(new java.awt.event.ActionListener() {
+        inventarioMedicamentos.setBackground(new java.awt.Color(126, 87, 194));
+        inventarioMedicamentos.setFont(new java.awt.Font("Century Gothic", 0, 12));
+        inventarioMedicamentos.setForeground(new java.awt.Color(255, 255, 255));
+        inventarioMedicamentos.setLabel("Administrar Inventario");
+        inventarioMedicamentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_administrar_medicamentosActionPerformed(evt);
+                inventarioMedicamentosActionPerformed(evt);
             }
         });
-        jPanel1.add(b_administrar_medicamentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 340, 50));
+        jPanel1.add(inventarioMedicamentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 340, 50));
 
-        b_buscar_medicamentos.setBackground(new java.awt.Color(126, 87, 194));
-        b_buscar_medicamentos.setFont(new java.awt.Font("Century Gothic", 0, 12));
-        b_buscar_medicamentos.setForeground(new java.awt.Color(255, 255, 255));
-        b_buscar_medicamentos.setLabel("Buscar Medicamentos");
-        jPanel1.add(b_buscar_medicamentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 340, 50));
+        administrarMedicamentos.setBackground(new java.awt.Color(126, 87, 194));
+        administrarMedicamentos.setFont(new java.awt.Font("Century Gothic", 0, 12));
+        administrarMedicamentos.setForeground(new java.awt.Color(255, 255, 255));
+        administrarMedicamentos.setLabel("Administrar Medicamentos");
+        administrarMedicamentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                administrarMedicamentosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(administrarMedicamentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 340, 50));
 
         l_enfermera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono2.png"))); // NOI18N
         jPanel1.add(l_enfermera, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, -1));
+
+        b_buscar_medicamentos1.setBackground(new java.awt.Color(126, 87, 194));
+        b_buscar_medicamentos1.setFont(new java.awt.Font("Century Gothic", 0, 12));
+        b_buscar_medicamentos1.setForeground(new java.awt.Color(255, 255, 255));
+        b_buscar_medicamentos1.setLabel("Buscar Medicamentos");
+        b_buscar_medicamentos1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_buscar_medicamentos1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(b_buscar_medicamentos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 340, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -91,9 +109,17 @@ public class EnfermeraVista extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void b_administrar_medicamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_administrar_medicamentosActionPerformed
+    private void inventarioMedicamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inventarioMedicamentosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_b_administrar_medicamentosActionPerformed
+    }//GEN-LAST:event_inventarioMedicamentosActionPerformed
+
+    private void administrarMedicamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_administrarMedicamentosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_administrarMedicamentosActionPerformed
+
+    private void b_buscar_medicamentos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_buscar_medicamentos1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_b_buscar_medicamentos1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,9 +157,10 @@ public class EnfermeraVista extends javax.swing.JFrame {
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button b_administrar_medicamentos;
-    private java.awt.Button b_buscar_medicamentos;
+    private java.awt.Button administrarMedicamentos;
+    private java.awt.Button b_buscar_medicamentos1;
     private java.awt.Button b_cerrar;
+    private java.awt.Button inventarioMedicamentos;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel l_enfermera;
     private javax.swing.JLabel l_salir;
@@ -141,8 +168,9 @@ public class EnfermeraVista extends javax.swing.JFrame {
 
     public void setActionListener(ActionListener actionListener) {
 
-        b_administrar_medicamentos.addActionListener(actionListener);
-        b_buscar_medicamentos.addActionListener(actionListener);
+        inventarioMedicamentos.addActionListener(actionListener);
+        administrarMedicamentos.addActionListener(actionListener);
+        b_buscar_medicamentos1.addActionListener(actionListener);
         b_cerrar.addActionListener(actionListener);
 
     }

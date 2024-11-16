@@ -1,5 +1,6 @@
 package controlador;
 
+import enfermera.AdministrarMedicamentos;
 import enfermera.Buscar_Medicamentos_Vista;
 import modelo.modelo;
 import vista_Principal.LoginVista;
@@ -10,6 +11,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import main.GestionadorHospitales;
 import medico.Buscar_EnfermedadesVista;
 import medico.MedicoVista;
 import medico.Ver_PacientesVista;
@@ -27,6 +31,7 @@ public class controlador {
     private LoginVista view;
 
     //ENFERMERA
+    private AdministrarMedicamentos enfermeraAdministrarMedicamentos;
     private EnfermeraVista enfermeraVista;
     private Buscar_Medicamentos_Vista enfermeraBuscar;
     private Administrar_Medicamentos_Vista enfermeraAdministrar;
@@ -37,12 +42,13 @@ public class controlador {
     private Buscar_EnfermedadesVista medicoBuscar;
     private VerHistorialPaciente historialVista;
 
-    public controlador(modelo model, LoginVista view, EnfermeraVista enfermeraVista, Buscar_Medicamentos_Vista enfermeraBuscar, Administrar_Medicamentos_Vista enfermeraAdministrar,
+    public controlador(modelo model, LoginVista view, EnfermeraVista enfermeraVista, AdministrarMedicamentos enfermeraAdministrarMedicamentos, Buscar_Medicamentos_Vista enfermeraBuscar, Administrar_Medicamentos_Vista enfermeraAdministrar,
             MedicoVista medicoVista, Ver_PacientesVista medicoPacientes, Buscar_EnfermedadesVista medicoBuscar) {
 
         this.model = model;
         this.view = view;
         this.enfermeraVista = enfermeraVista;
+        this.enfermeraAdministrarMedicamentos = enfermeraAdministrarMedicamentos;
         this.enfermeraBuscar = enfermeraBuscar;
         this.enfermeraAdministrar = enfermeraAdministrar;
         this.medicoVista = medicoVista;
@@ -58,6 +64,9 @@ public class controlador {
         this.medicoVista.setActionListener(onlyModelActionListener);
         this.medicoPacientes.setActionListener(onlyModelActionListener);
         this.medicoBuscar.setActionListener(onlyModelActionListener);
+        this.enfermeraAdministrarMedicamentos.setActionListener(onlyModelActionListener);
+        
+        this.enfermeraAdministrarMedicamentos.setValueChangeListener(onlyModelActionListener);
 
         this.medicoPacientes.getTable().addMouseListener(new MouseAdapter() {
             @Override
@@ -76,7 +85,7 @@ public class controlador {
         });
     }
 
-    class ControladorActionListener implements ActionListener {
+    class ControladorActionListener implements ActionListener, ListSelectionListener {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
@@ -116,10 +125,23 @@ public class controlador {
                     break;
 
                 //ENFERMERA   
-                case "enfermeraAdministrar":
+                case "enfermeraInventario":
                     enfermeraVista.hide();
                     enfermeraAdministrar.setVisible(true);
                     enfermeraAdministrar.verificarStock(main.GestionadorHospitales.getMedicamentos());
+                    break;
+
+                case "enfermeraAdministrar":
+                    enfermeraVista.hide();
+                    enfermeraAdministrarMedicamentos.setLista(GestionadorHospitales.getPacientes());
+                    enfermeraAdministrarMedicamentos.setVisible(true);
+
+                    break;
+                case "enfermeraAdministrarCerrar":
+
+                    enfermeraAdministrarMedicamentos.hide();
+                    enfermeraVista.setVisible(true);
+
                     break;
 
                 case "enfermeraMedicamentosCerrar":
@@ -176,6 +198,11 @@ public class controlador {
 
             }
         }
+
+        @Override
+        public void valueChanged(ListSelectionEvent e) {
+            System.out.println("lista");
+            enfermeraAdministrarMedicamentos.setDescripcion(GestionadorHospitales.getPacientes(), enfermeraAdministrarMedicamentos.getPaciente());
+        }
     }
 }
-

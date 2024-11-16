@@ -3,6 +3,7 @@ package main;
 import modelo.modelo;
 import vista_Principal.LoginVista;
 import controlador.controlador;
+import enfermera.AdministrarMedicamentos;
 import enfermera.Buscar_Medicamentos_Vista;
 import modelo.modelo;
 import vista_Principal.LoginVista;
@@ -38,6 +39,7 @@ public class GestionadorHospitales {
         LoginVista vista = new LoginVista();
 
         //ENFERMERA
+        AdministrarMedicamentos enfermeraAdministrarMedicamentos = new AdministrarMedicamentos();
         Administrar_Medicamentos_Vista enfermeraAdministrar = new Administrar_Medicamentos_Vista();
         Buscar_Medicamentos_Vista enfermeraBuscar = new Buscar_Medicamentos_Vista();
         EnfermeraVista enfermeraVista = new EnfermeraVista();
@@ -47,7 +49,7 @@ public class GestionadorHospitales {
         MedicoVista medicoVista = new MedicoVista();
         Ver_PacientesVista medicoPacientes = new Ver_PacientesVista();
         //CONTROLLER
-        controlador controller = new controlador(model, vista, enfermeraVista, enfermeraBuscar, enfermeraAdministrar, medicoVista, medicoPacientes, medicoBuscar);
+        controlador controller = new controlador(model, vista, enfermeraVista, enfermeraAdministrarMedicamentos, enfermeraBuscar, enfermeraAdministrar, medicoVista, medicoPacientes, medicoBuscar);
 
         vista.setVisible(true);
 
