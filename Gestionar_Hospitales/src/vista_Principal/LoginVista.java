@@ -1,21 +1,31 @@
 package vista_Principal;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
-/**
- *
- * @author Zakaria
- */
 public class LoginVista extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
-    public LoginVista() {
+public LoginVista() {
         initComponents();
 
         b_cerrar.setActionCommand("cerrar");
         b_iniciar_sesion.setActionCommand("iniciar");
+
+        KeyAdapter keyAdapter = new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    for (ActionListener al : b_iniciar_sesion.getActionListeners()) {
+                        al.actionPerformed(new ActionEvent(b_iniciar_sesion, ActionEvent.ACTION_PERFORMED, "iniciar"));
+                    }
+                }
+            }
+        };
+
+        tf_name.addKeyListener(keyAdapter);
+        tf_password.addKeyListener(keyAdapter);
     }
 
     /**
