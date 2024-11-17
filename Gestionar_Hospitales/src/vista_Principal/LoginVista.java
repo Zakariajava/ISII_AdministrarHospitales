@@ -35,11 +35,7 @@ public class LoginVista extends javax.swing.JFrame {
         l_salir = new javax.swing.JLabel();
         tf_name = new javax.swing.JTextField();
         sep_name = new javax.swing.JSeparator();
-        tf_email = new javax.swing.JTextField();
-        l_email = new javax.swing.JLabel();
-        sep_email = new javax.swing.JSeparator();
         l_password = new javax.swing.JLabel();
-        sep_password = new javax.swing.JSeparator();
         tf_password = new javax.swing.JPasswordField();
         b_cerrar = new java.awt.Button();
         b_iniciar_sesion = new java.awt.Button();
@@ -107,31 +103,23 @@ public class LoginVista extends javax.swing.JFrame {
         tf_name.setForeground(new java.awt.Color(57, 113, 177));
         tf_name.setBorder(null);
         tf_name.setCaretColor(new java.awt.Color(255, 255, 255));
-        panel_login.add(tf_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 330, 20));
+        tf_name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_nameActionPerformed(evt);
+            }
+        });
+        panel_login.add(tf_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 330, 20));
         panel_login.add(sep_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 330, 10));
-
-        tf_email.setBackground(new java.awt.Color(32, 33, 35));
-        tf_email.setForeground(new java.awt.Color(57, 113, 177));
-        tf_email.setBorder(null);
-        tf_email.setCaretColor(new java.awt.Color(255, 255, 255));
-        panel_login.add(tf_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 330, 20));
-
-        l_email.setBackground(new java.awt.Color(240, 240, 240));
-        l_email.setForeground(new java.awt.Color(51, 52, 54));
-        l_email.setText("Email");
-        panel_login.add(l_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 50, -1));
-        panel_login.add(sep_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 330, 10));
 
         l_password.setBackground(new java.awt.Color(240, 240, 240));
         l_password.setForeground(new java.awt.Color(51, 52, 54));
         l_password.setText("Contraseña");
-        panel_login.add(l_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 70, -1));
-        panel_login.add(sep_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 330, 10));
+        panel_login.add(l_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 70, -1));
 
         tf_password.setBackground(new java.awt.Color(32, 33, 35));
         tf_password.setForeground(new java.awt.Color(57, 113, 177));
         tf_password.setBorder(null);
-        panel_login.add(tf_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 330, -1));
+        panel_login.add(tf_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 226, 330, 20));
 
         b_cerrar.setBackground(new java.awt.Color(126, 87, 194));
         b_cerrar.setFont(new java.awt.Font("Century Gothic", 0, 12));
@@ -181,6 +169,10 @@ public class LoginVista extends javax.swing.JFrame {
 
     }//GEN-LAST:event_l_nombreMouseClicked
 
+    private void tf_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_nameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_nameActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -214,7 +206,6 @@ public class LoginVista extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button b_cerrar;
     private java.awt.Button b_iniciar_sesion;
-    private javax.swing.JLabel l_email;
     private javax.swing.JLabel l_gr;
     private javax.swing.JLabel l_is;
     private javax.swing.JLabel l_nombre;
@@ -223,10 +214,7 @@ public class LoginVista extends javax.swing.JFrame {
     private javax.swing.JLabel l_uv;
     private javax.swing.JPanel panel_inicio;
     private javax.swing.JPanel panel_login;
-    private javax.swing.JSeparator sep_email;
     private javax.swing.JSeparator sep_name;
-    private javax.swing.JSeparator sep_password;
-    private javax.swing.JTextField tf_email;
     private javax.swing.JTextField tf_name;
     private javax.swing.JPasswordField tf_password;
     // End of variables declaration//GEN-END:variables
@@ -240,12 +228,6 @@ public class LoginVista extends javax.swing.JFrame {
     public String getContraseña() {
 
         return tf_password.getText();
-
-    }
-
-    public String getEmail() {
-
-        return tf_email.getText();
 
     }
 
