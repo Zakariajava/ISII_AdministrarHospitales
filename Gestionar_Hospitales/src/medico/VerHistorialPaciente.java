@@ -5,7 +5,10 @@
 package medico;
 
 import controlador.controlador;
+import historial.VisitaMedica;
 import java.awt.event.ActionListener;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -35,9 +38,8 @@ public class VerHistorialPaciente extends javax.swing.JFrame {
         b_actualizar = new java.awt.Button();
         b_cerrar = new java.awt.Button();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jScrollBar1 = new javax.swing.JScrollBar();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,7 +61,7 @@ public class VerHistorialPaciente extends javax.swing.JFrame {
                 b_actualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(b_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 460, 140, 30));
+        jPanel1.add(b_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 480, 140, 30));
 
         b_cerrar.setBackground(new java.awt.Color(126, 87, 194));
         b_cerrar.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -70,19 +72,30 @@ public class VerHistorialPaciente extends javax.swing.JFrame {
                 b_cerrarActionPerformed(evt);
             }
         });
-        jPanel1.add(b_cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 460, 140, 30));
+        jPanel1.add(b_cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 480, 140, 30));
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Historial del paciente");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, -1, -1));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Fecha", "Descripción", "Diagnóstico"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(6);
+        }
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 490, 320));
-        jPanel1.add(jScrollBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, -1, 320));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 60, 510, 400));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -147,9 +160,8 @@ public class VerHistorialPaciente extends javax.swing.JFrame {
     private java.awt.Button b_cerrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollBar jScrollBar1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel l_salir;
     // End of variables declaration//GEN-END:variables
 
@@ -158,5 +170,14 @@ public class VerHistorialPaciente extends javax.swing.JFrame {
         b_cerrar.setActionCommand("cerrarHistorial");
         b_cerrar.addActionListener(actionListener);
         
+    }
+    
+    public void actualizarTabla(List<VisitaMedica> visitas) {
+        
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0); // Limpiar la tabla antes de agregar nuevas filas
+            for (VisitaMedica visita : visitas) {
+                model.addRow(new Object[]{visita.getFecha(), visita.getDescripcion(), visita.getDiagnostico()});
+            }
     }
 }

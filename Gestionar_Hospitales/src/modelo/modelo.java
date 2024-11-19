@@ -1,5 +1,9 @@
 package modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+import pacientes.Paciente;
+
 /**
  *
  * @author zakaria Abouhammadi
@@ -7,6 +11,8 @@ package modelo;
 
 public final class modelo {
     
+    
+    private List<Paciente> pacientes;
     /*
     * Nombre del Usuario.
     */
@@ -16,6 +22,15 @@ public final class modelo {
     * Contrasña del Usuario.
     */
     private String passwordUsuario;
+    
+    
+    public modelo() {
+        this.pacientes = new ArrayList<>();
+    }
+    
+    public List<Paciente> getPacientes() {
+        return pacientes;
+    }
     
     /**
     * Obtiene el nombre del usuario.
@@ -50,6 +65,21 @@ public final class modelo {
         }
     }
     
+    public Paciente getPacientePorNombre(String nombre) {
+        for (Paciente paciente : pacientes) {
+            if (paciente.getNombre().equalsIgnoreCase(nombre)) {
+                return paciente;
+            }
+        }
+        
+    return null; // Si no se encuentra
+    }
+    
+    public void agregarPaciente(List<Paciente> pacientes) {
+    for (Paciente paciente : pacientes) {
+        this.pacientes.add(paciente);  // Agrega el paciente a la lista
+    }
+}
     //COSAS DEL MODELO QUE SI TENEMOS IDEA DE QUE SON
     
     

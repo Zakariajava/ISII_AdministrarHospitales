@@ -9,6 +9,7 @@ import modelo.modelo;
 import vista_Principal.LoginVista;
 import enfermera.EnfermeraVista;
 import enfermera.Administrar_Medicamentos_Vista;
+import historial.HistorialMedico;
 import java.util.ArrayList;
 import java.util.List;
 import medicamentos.Medicamentos;
@@ -64,7 +65,15 @@ public class GestionadorHospitales {
         //MEDICAMENTOS
         Medicamentos paracetamol = new Medicamentos("Paracetamol", 100);
         Medicamentos ibuprofeno = new Medicamentos("Ibuprofeno", 49);
+        //HISTORIALES
+        HistorialMedico historialPepe = new HistorialMedico();
+        historialPepe.agregarVisita("2024-01-15", "Revisión general", "Todo normal");
+        historialPepe.agregarVisita("2024-03-10", "Dolor de cabeza", "Migraña tratada con ibuprofeno");
 
+        HistorialMedico historialMarcos = new HistorialMedico();
+        historialMarcos.agregarVisita("2024-02-22", "Dolor abdominal", "Gastritis");
+        historialMarcos.agregarVisita("2024-05-05", "Revisión post-quirúrgica", "Recuperación favorable");
+        
         //List<Medicamentos> medicamentos = new ArrayList<>();
         medicamentos.add(paracetamol);
         medicamentos.add(ibuprofeno);
@@ -75,10 +84,11 @@ public class GestionadorHospitales {
         pacientes.add(paciente4);
         pacientes.add(paciente5);
         pacientes.add(paciente6);
-
+        
         medicoPacientes.mostrarPacientes(pacientes);
         enfermeraAdministrar.mostrarMedicamentos(medicamentos);
 
+        model.agregarPaciente(pacientes);
     }
 
     public static List<Paciente> getPacientes() {

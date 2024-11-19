@@ -18,6 +18,7 @@ import medico.Buscar_EnfermedadesVista;
 import medico.MedicoVista;
 import medico.Ver_PacientesVista;
 import medico.VerHistorialPaciente;
+import pacientes.Paciente;
 
 /**
  *
@@ -69,20 +70,38 @@ public class controlador {
         this.enfermeraAdministrarMedicamentos.setValueChangeListener(onlyModelActionListener);
 
         this.medicoPacientes.getTable().addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-                    int selectedRow = medicoPacientes.getTable().getSelectedRow();
-                    if (selectedRow != -1) {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            if (e.getClickCount() == 2) {
+                int selectedRow = medicoPacientes.getTable().getSelectedRow();
+                if (selectedRow != -1) {
+                    // Obtener el nombre del paciente seleccionado de la tabla
+                    String nombrePaciente = (String) medicoPacientes.getTable().getValueAt(selectedRow, 0);
 
-                        String nombrePaciente = (String) medicoPacientes.getTable().getValueAt(selectedRow, 0);
+                    // Buscar al paciente en el modelo
+                    Paciente pacienteSeleccionado = model.getPacientePorNombre(nombrePaciente);
 
+                    if (pacienteSeleccionado != null) {
+                        // Crear la vista del historial
                         VerHistorialPaciente historialVista = new VerHistorialPaciente();
+
+                        // Actualizar la tabla de la vista del historial con los datos del paciente
+                        historialVista.actualizarTabla(pacienteSeleccionado.getHistorialMedico().getVisitas());
+
+                        // Mostrar la ventana del historial
                         historialVista.setVisible(true);
+                    } else {
+                        // Mostrar un mensaje si no se encuentra el paciente (opcional)
+                        JOptionPane.showMessageDialog(medicoPacientes,
+                            "Paciente no encontrado",
+                            "Error",
+                            JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
+        }
         });
+
     }
 
     class ControladorActionListener implements ActionListener, ListSelectionListener {

@@ -1,5 +1,7 @@
 package pacientes;
 
+import historial.HistorialMedico;
+
 /**
  *
  * @author Albercoque64
@@ -13,7 +15,8 @@ public class Paciente {
     private String dosis;
     private String frecuencia;
     private int habitacion;
-
+    private HistorialMedico historialMedico;
+    
     public Paciente(String nombre, String apellidos, String sintomas, int habitacion, String medicamento, String dosis, String frecuencia) {
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -22,8 +25,13 @@ public class Paciente {
         this.medicamento = medicamento;
         this.dosis = dosis;
         this.frecuencia = frecuencia;
+        this.historialMedico = new HistorialMedico();
     }
 
+    public HistorialMedico getHistorialMedico() {
+        return historialMedico;
+    }
+    
     public String getNombre() {
 
         return nombre;
@@ -92,5 +100,9 @@ public class Paciente {
     public void setHabitacion(int habitacion) {
 
         this.habitacion = habitacion;
+    }
+    
+    public void setHistorialMedico(HistorialMedico historialMedico) {
+        this.historialMedico = historialMedico;
     }
 }
