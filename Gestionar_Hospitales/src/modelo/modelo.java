@@ -67,7 +67,8 @@ public final class modelo {
     
     public Paciente getPacientePorNombre(String nombre) {
         for (Paciente paciente : pacientes) {
-            if (paciente.getNombre().equalsIgnoreCase(nombre)) {
+            if (paciente.getNombre().equalsIgnoreCase(nombre)) {  
+                
                 return paciente;
             }
         }

@@ -25,7 +25,6 @@ public class Paciente {
         this.medicamento = medicamento;
         this.dosis = dosis;
         this.frecuencia = frecuencia;
-        this.historialMedico = new HistorialMedico();
     }
 
     public HistorialMedico getHistorialMedico() {

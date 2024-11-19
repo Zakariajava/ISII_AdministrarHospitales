@@ -174,6 +174,8 @@ public class VerHistorialPaciente extends javax.swing.JFrame {
     
     public void actualizarTabla(List<VisitaMedica> visitas) {
         
+        System.out.println(visitas.toString());
+        
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0); // Limpiar la tabla antes de agregar nuevas filas
             for (VisitaMedica visita : visitas) {

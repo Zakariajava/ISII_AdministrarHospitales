@@ -38,7 +38,7 @@ public class Buscar_Medicamentos_Vista extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(211, 211, 211));
+        jPanel1.setForeground(new java.awt.Color(60, 63, 65));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 600));
 
         ATRAS.setText("ATRAS");
@@ -50,11 +50,6 @@ public class Buscar_Medicamentos_Vista extends javax.swing.JFrame {
 
         jLabel1.setText("N:ombre medicamento");
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Medicamento 1", "Medicamento 2", "Medicamento 3", "Medicamento 4", "Medicamento 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(jList1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -145,8 +140,7 @@ public class Buscar_Medicamentos_Vista extends javax.swing.JFrame {
             }
         });
     }
-    
-      
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ATRAS;
@@ -162,4 +156,9 @@ public class Buscar_Medicamentos_Vista extends javax.swing.JFrame {
         ATRAS.addActionListener(actionListener);
 
     }
+
+    public void setTexto(String texto) {
+
+    }
+
 }

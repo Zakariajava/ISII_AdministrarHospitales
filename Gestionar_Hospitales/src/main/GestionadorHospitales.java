@@ -30,7 +30,7 @@ public class GestionadorHospitales {
      */
     private static List<Medicamentos> medicamentos = new ArrayList<>();
     private static List<Paciente> pacientes = new ArrayList<>();
-
+    
     public static void main(String[] args) {
 
         //MOEDLO
@@ -51,7 +51,7 @@ public class GestionadorHospitales {
         Ver_PacientesVista medicoPacientes = new Ver_PacientesVista();
         //CONTROLLER
         controlador controller = new controlador(model, vista, enfermeraVista, enfermeraAdministrarMedicamentos, enfermeraBuscar, enfermeraAdministrar, medicoVista, medicoPacientes, medicoBuscar);
-
+        
         vista.setVisible(true);
 
         //BD
@@ -69,15 +69,17 @@ public class GestionadorHospitales {
         HistorialMedico historialPepe = new HistorialMedico();
         historialPepe.agregarVisita("2024-01-15", "Revisión general", "Todo normal");
         historialPepe.agregarVisita("2024-03-10", "Dolor de cabeza", "Migraña tratada con ibuprofeno");
-
+        
         HistorialMedico historialMarcos = new HistorialMedico();
         historialMarcos.agregarVisita("2024-02-22", "Dolor abdominal", "Gastritis");
         historialMarcos.agregarVisita("2024-05-05", "Revisión post-quirúrgica", "Recuperación favorable");
         
+        paciente1.setHistorialMedico(historialPepe);
+        paciente2.setHistorialMedico(historialMarcos);
         //List<Medicamentos> medicamentos = new ArrayList<>();
         medicamentos.add(paracetamol);
         medicamentos.add(ibuprofeno);
-
+        
         pacientes.add(paciente1);
         pacientes.add(paciente2);
         pacientes.add(paciente3);
@@ -87,14 +89,14 @@ public class GestionadorHospitales {
         
         medicoPacientes.mostrarPacientes(pacientes);
         enfermeraAdministrar.mostrarMedicamentos(medicamentos);
-
+        
         model.agregarPaciente(pacientes);
     }
-
+    
     public static List<Paciente> getPacientes() {
         return pacientes;
     }
-
+    
     public static List<Medicamentos> getMedicamentos() {
         return medicamentos;
     }
