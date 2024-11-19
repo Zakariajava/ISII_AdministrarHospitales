@@ -6,6 +6,8 @@ import modelo.modelo;
 import vista_Principal.LoginVista;
 import enfermera.EnfermeraVista;
 import enfermera.Administrar_Medicamentos_Vista;
+import historial.HistorialMedico;
+import historial.VisitaMedica;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -42,6 +44,8 @@ public class controlador {
     private Ver_PacientesVista medicoPacientes;
     private Buscar_EnfermedadesVista medicoBuscar;
     private VerHistorialPaciente historialVista;
+    private HistorialMedico historialMedico;
+    private VisitaMedica visitaMedica;
 
     public controlador(modelo model, LoginVista view, EnfermeraVista enfermeraVista, AdministrarMedicamentos enfermeraAdministrarMedicamentos, Buscar_Medicamentos_Vista enfermeraBuscar, Administrar_Medicamentos_Vista enfermeraAdministrar,
             MedicoVista medicoVista, Ver_PacientesVista medicoPacientes, Buscar_EnfermedadesVista medicoBuscar) {
@@ -66,40 +70,40 @@ public class controlador {
         this.medicoPacientes.setActionListener(onlyModelActionListener);
         this.medicoBuscar.setActionListener(onlyModelActionListener);
         this.enfermeraAdministrarMedicamentos.setActionListener(onlyModelActionListener);
-        
+
         this.enfermeraAdministrarMedicamentos.setValueChangeListener(onlyModelActionListener);
 
         this.medicoPacientes.getTable().addMouseListener(new MouseAdapter() {
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            if (e.getClickCount() == 2) {
-                int selectedRow = medicoPacientes.getTable().getSelectedRow();
-                if (selectedRow != -1) {
-                    // Obtener el nombre del paciente seleccionado de la tabla
-                    String nombrePaciente = (String) medicoPacientes.getTable().getValueAt(selectedRow, 0);
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    int selectedRow = medicoPacientes.getTable().getSelectedRow();
+                    if (selectedRow != -1) {
+                        // Obtener el nombre del paciente seleccionado de la tabla
+                        String nombrePaciente = (String) medicoPacientes.getTable().getValueAt(selectedRow, 0);
+                        // Buscar al paciente en el modelo
+                        Paciente pacienteSeleccionado = model.getPacientePorNombre(nombrePaciente);
 
-                    // Buscar al paciente en el modelo
-                    Paciente pacienteSeleccionado = model.getPacientePorNombre(nombrePaciente);
+                        if (pacienteSeleccionado.getHistorialMedico() != null) {
+                            // Crear la vista del historial
+                            VerHistorialPaciente historialVista = new VerHistorialPaciente();
+                                                      
+                            // Actualizar la tabla de la vista del historial con los datos del paciente     
+                            
+                            historialVista.actualizarTabla(pacienteSeleccionado.getHistorialMedico().getVisitas());
 
-                    if (pacienteSeleccionado != null) {
-                        // Crear la vista del historial
-                        VerHistorialPaciente historialVista = new VerHistorialPaciente();
-
-                        // Actualizar la tabla de la vista del historial con los datos del paciente
-                        historialVista.actualizarTabla(pacienteSeleccionado.getHistorialMedico().getVisitas());
-
-                        // Mostrar la ventana del historial
-                        historialVista.setVisible(true);
-                    } else {
-                        // Mostrar un mensaje si no se encuentra el paciente (opcional)
-                        JOptionPane.showMessageDialog(medicoPacientes,
-                            "Paciente no encontrado",
-                            "Error",
-                            JOptionPane.ERROR_MESSAGE);
+                            // Mostrar la ventana del historial
+                            historialVista.setVisible(true);
+                        } else {
+                            // Mostrar un mensaje si no se encuentra el paciente (opcional)
+                            JOptionPane.showMessageDialog(medicoPacientes,
+                                    "Paciente no encontrado",
+                                    "Error",
+                                    JOptionPane.ERROR_MESSAGE);
+                        }
                     }
                 }
             }
-        }
         });
 
     }
