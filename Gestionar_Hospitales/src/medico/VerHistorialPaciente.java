@@ -8,7 +8,9 @@ import controlador.controlador;
 import historial.VisitaMedica;
 import java.awt.event.ActionListener;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import pacientes.Paciente;
 
 /**
  *
@@ -16,12 +18,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class VerHistorialPaciente extends javax.swing.JFrame {
 
+    private Paciente pacienteSeleccionado;
     /**
      * Creates new form VerHistorialPaciente
      */
     public VerHistorialPaciente() {
         initComponents();
-        
+        b_añadir.setActionCommand("añadirVisita");
+
     }
 
     /**
@@ -35,7 +39,7 @@ public class VerHistorialPaciente extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         l_salir = new javax.swing.JLabel();
-        b_actualizar = new java.awt.Button();
+        b_añadir = new java.awt.Button();
         b_cerrar = new java.awt.Button();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -51,17 +55,17 @@ public class VerHistorialPaciente extends javax.swing.JFrame {
         l_salir.setText("X");
         jPanel1.add(l_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 0, 20, 30));
 
-        b_actualizar.setBackground(new java.awt.Color(126, 87, 194));
-        b_actualizar.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        b_actualizar.setForeground(new java.awt.Color(255, 255, 255));
-        b_actualizar.setLabel("Actualizar");
-        b_actualizar.setName("Actualizar"); // NOI18N
-        b_actualizar.addActionListener(new java.awt.event.ActionListener() {
+        b_añadir.setBackground(new java.awt.Color(126, 87, 194));
+        b_añadir.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        b_añadir.setForeground(new java.awt.Color(255, 255, 255));
+        b_añadir.setLabel("Añadir");
+        b_añadir.setName("Añadir"); // NOI18N
+        b_añadir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_actualizarActionPerformed(evt);
+                b_añadirActionPerformed(evt);
             }
         });
-        jPanel1.add(b_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 480, 140, 30));
+        jPanel1.add(b_añadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 480, 140, 30));
 
         b_cerrar.setBackground(new java.awt.Color(126, 87, 194));
         b_cerrar.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -111,9 +115,9 @@ public class VerHistorialPaciente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void b_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_actualizarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_b_actualizarActionPerformed
+    private void b_añadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_añadirActionPerformed
+
+    }//GEN-LAST:event_b_añadirActionPerformed
 
     private void b_cerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_cerrarActionPerformed
         // TODO add your handling code here:
@@ -156,7 +160,7 @@ public class VerHistorialPaciente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button b_actualizar;
+    private java.awt.Button b_añadir;
     private java.awt.Button b_cerrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
@@ -170,6 +174,7 @@ public class VerHistorialPaciente extends javax.swing.JFrame {
         b_cerrar.setActionCommand("cerrarHistorial");
         b_cerrar.addActionListener(actionListener);
         
+        b_añadir.addActionListener(actionListener);
     }
     
     public void actualizarTabla(List<VisitaMedica> visitas) {
@@ -182,4 +187,14 @@ public class VerHistorialPaciente extends javax.swing.JFrame {
                 model.addRow(new Object[]{visita.getFecha(), visita.getDescripcion(), visita.getDiagnostico()});
             }
     }
+    
+    public Paciente getPacienteSeleccionado() {
+        return pacienteSeleccionado;  // Método para acceder al paciente
+    }
+    
+    public void setPacienteSeleccionado(Paciente paciente) {
+        this.pacienteSeleccionado = paciente;
+    }
+
+
 }

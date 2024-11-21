@@ -49,8 +49,9 @@ public class GestionadorHospitales {
         Buscar_EnfermedadesVista medicoBuscar = new Buscar_EnfermedadesVista();
         MedicoVista medicoVista = new MedicoVista();
         Ver_PacientesVista medicoPacientes = new Ver_PacientesVista();
+        VerHistorialPaciente verHistorialPaciente = new VerHistorialPaciente();
         //CONTROLLER
-        controlador controller = new controlador(model, vista, enfermeraVista, enfermeraAdministrarMedicamentos, enfermeraBuscar, enfermeraAdministrar, medicoVista, medicoPacientes, medicoBuscar);
+        controlador controller = new controlador(model, vista, enfermeraVista, enfermeraAdministrarMedicamentos, enfermeraBuscar, enfermeraAdministrar, medicoVista, medicoPacientes, medicoBuscar, verHistorialPaciente);
         
         vista.setVisible(true);
 

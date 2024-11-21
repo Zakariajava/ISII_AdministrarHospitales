@@ -46,9 +46,10 @@ public class controlador {
     private VerHistorialPaciente historialVista;
     private HistorialMedico historialMedico;
     private VisitaMedica visitaMedica;
-
+    private VerHistorialPaciente verHistorialPaciente;
+    
     public controlador(modelo model, LoginVista view, EnfermeraVista enfermeraVista, AdministrarMedicamentos enfermeraAdministrarMedicamentos, Buscar_Medicamentos_Vista enfermeraBuscar, Administrar_Medicamentos_Vista enfermeraAdministrar,
-            MedicoVista medicoVista, Ver_PacientesVista medicoPacientes, Buscar_EnfermedadesVista medicoBuscar) {
+            MedicoVista medicoVista, Ver_PacientesVista medicoPacientes, Buscar_EnfermedadesVista medicoBuscar, VerHistorialPaciente verHistorialPaciente) {
 
         this.model = model;
         this.view = view;
@@ -59,7 +60,8 @@ public class controlador {
         this.medicoVista = medicoVista;
         this.medicoPacientes = medicoPacientes;
         this.medicoBuscar = medicoBuscar;
-
+        this.verHistorialPaciente = verHistorialPaciente;
+        
         ControladorActionListener onlyModelActionListener = new ControladorActionListener();
 
         this.view.setActionListener(onlyModelActionListener);
@@ -70,7 +72,8 @@ public class controlador {
         this.medicoPacientes.setActionListener(onlyModelActionListener);
         this.medicoBuscar.setActionListener(onlyModelActionListener);
         this.enfermeraAdministrarMedicamentos.setActionListener(onlyModelActionListener);
-
+        this.verHistorialPaciente.setActionListener(onlyModelActionListener);
+        
         this.enfermeraAdministrarMedicamentos.setValueChangeListener(onlyModelActionListener);
 
         this.medicoPacientes.getTable().addMouseListener(new MouseAdapter() {
@@ -86,18 +89,21 @@ public class controlador {
 
                         if (pacienteSeleccionado.getHistorialMedico() != null) {
                             // Crear la vista del historial
-                            VerHistorialPaciente historialVista = new VerHistorialPaciente();
-                                                      
+                            //VerHistorialPaciente historialVista = new VerHistorialPaciente();
+                                         
+                            verHistorialPaciente.setPacienteSeleccionado(pacienteSeleccionado);
+                            
                             // Actualizar la tabla de la vista del historial con los datos del paciente     
                             
-                            historialVista.actualizarTabla(pacienteSeleccionado.getHistorialMedico().getVisitas());
+                            //historialVista.actualizarTabla(pacienteSeleccionado.getHistorialMedico().getVisitas());
+                            verHistorialPaciente.actualizarTabla(pacienteSeleccionado.getHistorialMedico().getVisitas());
 
                             // Mostrar la ventana del historial
-                            historialVista.setVisible(true);
+                            verHistorialPaciente.setVisible(true);
                         } else {
                             // Mostrar un mensaje si no se encuentra el paciente (opcional)
                             JOptionPane.showMessageDialog(medicoPacientes,
-                                    "Paciente no encontrado",
+                                    "No tiene historial médico",
                                     "Error",
                                     JOptionPane.ERROR_MESSAGE);
                         }
@@ -218,7 +224,31 @@ public class controlador {
                 case "medicoCerrar":
                     medicoVista.hide();
                     view.setVisible(true);
+                
+                    break;
+                    
+                case "añadirVisita":
 
+                    Paciente paciente = verHistorialPaciente.getPacienteSeleccionado();
+    
+                    if (paciente != null) {
+       
+                        String fecha = JOptionPane.showInputDialog(verHistorialPaciente, "Introduce la fecha de la visita (YYYY-MM-DD):");
+                        String descripcion = JOptionPane.showInputDialog(verHistorialPaciente, "Introduce la descripción de la visita:");
+                        String diagnostico = JOptionPane.showInputDialog(verHistorialPaciente, "Introduce el diagnóstico:");
+
+                            if (fecha != null && descripcion != null && diagnostico != null && !fecha.isEmpty() && !descripcion.isEmpty() && !diagnostico.isEmpty()) {
+
+                                VisitaMedica nuevaVisita = new VisitaMedica(fecha, descripcion, diagnostico);
+
+                                paciente.getHistorialMedico().agregarVisita(fecha, descripcion, diagnostico);
+
+                            verHistorialPaciente.actualizarTabla(paciente.getHistorialMedico().getVisitas());
+                            } 
+                            else {
+                                JOptionPane.showMessageDialog(verHistorialPaciente, "¡Todos los campos deben estar completos!", "Error", JOptionPane.ERROR_MESSAGE);
+                            }
+                    }            
             }
         }
 
@@ -227,5 +257,6 @@ public class controlador {
             System.out.println("lista");
             enfermeraAdministrarMedicamentos.setDescripcion(GestionadorHospitales.getPacientes(), enfermeraAdministrarMedicamentos.getPaciente());
         }
+        
     }
 }
