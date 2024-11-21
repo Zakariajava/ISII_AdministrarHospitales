@@ -226,7 +226,7 @@ public class controlador {
                     String descripcion = JOptionPane.showInputDialog(verHistorialPaciente, "Introduce la descripción de la visita:");
                     String diagnostico = JOptionPane.showInputDialog(verHistorialPaciente, "Introduce el diagnóstico:");
 
-                    // vista duplicada
+                    // Visita duplicada
                     boolean existe = false;
                     List<VisitaMedica> visitas = verHistorialPaciente.getPacienteSeleccionado().getHistorialMedico().getVisitas();
                     for (VisitaMedica visita : visitas) {
@@ -236,7 +236,7 @@ public class controlador {
                         }
                     }
 
-                    // campos vacios
+                    // Campos vacios
                     if (fecha != null && descripcion != null && diagnostico != null && !fecha.isEmpty() && !descripcion.isEmpty() && !diagnostico.isEmpty()) {
                         if (!existe) {
                             verHistorialPaciente.getPacienteSeleccionado().getHistorialMedico().agregarVisita(fecha, descripcion, diagnostico);
