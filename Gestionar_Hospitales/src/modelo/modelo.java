@@ -73,14 +73,14 @@ public final class modelo {
             }
         }
         
-    return null; // Si no se encuentra
+    return null;
     }
     
     public void agregarPaciente(List<Paciente> pacientes) {
-    for (Paciente paciente : pacientes) {
-        this.pacientes.add(paciente);  // Agrega el paciente a la lista
+        for (Paciente paciente : pacientes) {
+            this.pacientes.add(paciente);
+        }
     }
-}
     //COSAS DEL MODELO QUE SI TENEMOS IDEA DE QUE SON
     
     
