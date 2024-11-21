@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import main.GestionadorHospitales;
@@ -219,29 +220,33 @@ public class controlador {
                     view.setVisible(true);
                 
                     break;
-                    
-                case "añadirVisita":
+                              
+                case "añadirVisita":                  
+                    String fecha = JOptionPane.showInputDialog(verHistorialPaciente, "Introduce la fecha de la visita (YYYY-MM-DD):");
+                    String descripcion = JOptionPane.showInputDialog(verHistorialPaciente, "Introduce la descripción de la visita:");
+                    String diagnostico = JOptionPane.showInputDialog(verHistorialPaciente, "Introduce el diagnóstico:");
 
-                    Paciente paciente = verHistorialPaciente.getPacienteSeleccionado();
-    
-                    if (paciente != null) {
-       
-                        String fecha = JOptionPane.showInputDialog(verHistorialPaciente, "Introduce la fecha de la visita (YYYY-MM-DD):");
-                        String descripcion = JOptionPane.showInputDialog(verHistorialPaciente, "Introduce la descripción de la visita:");
-                        String diagnostico = JOptionPane.showInputDialog(verHistorialPaciente, "Introduce el diagnóstico:");
+                    // vista duplicada
+                    boolean existe = false;
+                    List<VisitaMedica> visitas = verHistorialPaciente.getPacienteSeleccionado().getHistorialMedico().getVisitas();
+                    for (VisitaMedica visita : visitas) {
+                        if (visita.getFecha().equals(fecha) && visita.getDescripcion().equals(descripcion) && visita.getDiagnostico().equals(diagnostico)) {
+                            existe = true;
+                            break;
+                        }
+                    }
 
-                            if (fecha != null && descripcion != null && diagnostico != null && !fecha.isEmpty() && !descripcion.isEmpty() && !diagnostico.isEmpty()) {
-
-                                VisitaMedica nuevaVisita = new VisitaMedica(fecha, descripcion, diagnostico);
-
-                                paciente.getHistorialMedico().agregarVisita(fecha, descripcion, diagnostico);
-
-                            verHistorialPaciente.actualizarTabla(paciente.getHistorialMedico().getVisitas());
-                            } 
-                            else {
-                                JOptionPane.showMessageDialog(verHistorialPaciente, "¡Todos los campos deben estar completos!", "Error", JOptionPane.ERROR_MESSAGE);
-                            }
-                    }            
+                    // campos vacios
+                    if (fecha != null && descripcion != null && diagnostico != null && !fecha.isEmpty() && !descripcion.isEmpty() && !diagnostico.isEmpty()) {
+                        if (!existe) {
+                            verHistorialPaciente.getPacienteSeleccionado().getHistorialMedico().agregarVisita(fecha, descripcion, diagnostico);
+                            verHistorialPaciente.actualizarTabla(visitas); // Actualiza la tabla con la nueva visita
+                        } else {
+                            JOptionPane.showMessageDialog(verHistorialPaciente, "La visita ya existe en el historial.", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(verHistorialPaciente, "¡Todos los campos deben estar completos!", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
             }
         }
 
