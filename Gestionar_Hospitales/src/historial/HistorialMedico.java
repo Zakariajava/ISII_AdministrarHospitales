@@ -1,10 +1,10 @@
-
 package historial;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HistorialMedico {
+
     private List<VisitaMedica> visitas;
 
     public HistorialMedico() {
@@ -18,4 +18,6 @@ public class HistorialMedico {
     public List<VisitaMedica> getVisitas() {
         return visitas;
     }
+
+ 
 }

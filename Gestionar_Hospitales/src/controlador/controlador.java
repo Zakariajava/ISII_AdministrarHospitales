@@ -97,9 +97,37 @@ public class controlador {
                             verHistorialPaciente.setVisible(true);
                         } else {
                             JOptionPane.showMessageDialog(medicoPacientes,
-                                    "No tiene historial médico",
+                                    "El Paciente no tien historial Medico",
                                     "Error",
                                     JOptionPane.ERROR_MESSAGE);
+
+                            String fecha = JOptionPane.showInputDialog(verHistorialPaciente, "Introduce la fecha de la visita (YYYY-MM-DD):");
+                            String descripcion = JOptionPane.showInputDialog(verHistorialPaciente, "Introduce la descripción de la visita:");
+                            String diagnostico = JOptionPane.showInputDialog(verHistorialPaciente, "Introduce el diagnóstico:");
+                            // Visita duplicada
+                            pacienteSeleccionado.getHistorialMedico().agregarVisita(fecha, descripcion, diagnostico);
+
+                            boolean existe = false;
+                            List<VisitaMedica> visitas = verHistorialPaciente.getPacienteSeleccionado().getHistorialMedico().getVisitas();
+                            for (VisitaMedica visita : visitas) {
+                                if (visita.getFecha().equals(fecha) && visita.getDescripcion().equals(descripcion) && visita.getDiagnostico().equals(diagnostico)) {
+                                    existe = true;
+                                    break;
+                                }
+                            }
+
+                            // Campos vacios
+                            if (fecha != null && descripcion != null && diagnostico != null && !fecha.isEmpty() && !descripcion.isEmpty() && !diagnostico.isEmpty()) {
+                                if (!existe) {
+                                    verHistorialPaciente.getPacienteSeleccionado().getHistorialMedico().agregarVisita(fecha, descripcion, diagnostico);
+                                    verHistorialPaciente.actualizarTabla(visitas); // Actualiza la tabla con la nueva visita
+                                } else {
+                                    JOptionPane.showMessageDialog(verHistorialPaciente, "La visita ya existe en el historial.", "Error", JOptionPane.ERROR_MESSAGE);
+                                }
+                            } else {
+                                JOptionPane.showMessageDialog(verHistorialPaciente, "¡Todos los campos deben estar completos!", "Error", JOptionPane.ERROR_MESSAGE);
+                            }
+
                         }
                     }
                 }
@@ -252,6 +280,7 @@ public class controlador {
                     } else {
                         JOptionPane.showMessageDialog(verHistorialPaciente, "¡Todos los campos deben estar completos!", "Error", JOptionPane.ERROR_MESSAGE);
                     }
+                    break;
             }
         }
 

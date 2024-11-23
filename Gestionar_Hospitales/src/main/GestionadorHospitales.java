@@ -104,8 +104,18 @@ public class GestionadorHospitales {
         historialMarcos.agregarVisita("2024-02-22", "Dolor abdominal", "Gastritis");
         historialMarcos.agregarVisita("2024-05-05", "Revisión post-quirúrgica", "Recuperación favorable");
 
+        HistorialMedico historialCamilo = new HistorialMedico();
+        HistorialMedico historialJose = new HistorialMedico();
+        HistorialMedico historialPedro = new HistorialMedico();
+        HistorialMedico historialMaria = new HistorialMedico();
+
         paciente1.setHistorialMedico(historialPepe);
         paciente2.setHistorialMedico(historialMarcos);
+        paciente3.setHistorialMedico(historialCamilo);
+        paciente4.setHistorialMedico(historialJose);
+        paciente5.setHistorialMedico(historialPedro);
+        paciente6.setHistorialMedico(historialMaria);
+
         pacientes.add(paciente1);
         pacientes.add(paciente2);
         pacientes.add(paciente3);
