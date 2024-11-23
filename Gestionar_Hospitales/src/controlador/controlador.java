@@ -93,7 +93,7 @@ public class controlador {
                             verHistorialPaciente.setPacienteSeleccionado(pacienteSeleccionado);
 
                             verHistorialPaciente.actualizarTabla(pacienteSeleccionado.getHistorialMedico().getVisitas());
-
+                            verHistorialPaciente.setLocationRelativeTo(null);
                             verHistorialPaciente.setVisible(true);
                         } else {
                             JOptionPane.showMessageDialog(medicoPacientes,
@@ -161,12 +161,14 @@ public class controlador {
                         // Si el usuario y la contraseña coinciden con "enfermera" y "enfermera", abre la ventana ventanaAdminVista
 
                         view.hide();
+                        enfermeraVista.setLocationRelativeTo(null);
                         enfermeraVista.setVisible(true);
 
                     } else if (view.getUsuario().equals("medico") && view.getContraseña().equals("medico")) {
                         // Si el usuario y la contraseña coinciden con "enfermera" y "enfermera", abre la ventana ventanaAdminVista
 
                         view.hide();
+                        medicoVista.setLocationRelativeTo(null);
                         medicoVista.setVisible(true);
 
                     } else {
@@ -178,6 +180,7 @@ public class controlador {
                 //ENFERMERA   
                 case "enfermeraInventario":
                     enfermeraVista.hide();
+                    enfermeraAdministrar.setLocationRelativeTo(null);
                     enfermeraAdministrar.setVisible(true);
                     enfermeraAdministrar.verificarStock(main.GestionadorHospitales.getMedicamentos());
                     break;
@@ -185,24 +188,28 @@ public class controlador {
                 case "enfermeraAdministrar":
                     enfermeraVista.hide();
                     enfermeraAdministrarMedicamentos.setLista(GestionadorHospitales.getPacientes());
+                    enfermeraAdministrarMedicamentos.setLocationRelativeTo(null);
                     enfermeraAdministrarMedicamentos.setVisible(true);
 
                     break;
                 case "enfermeraAdministrarCerrar":
 
                     enfermeraAdministrarMedicamentos.hide();
+                    enfermeraVista.setLocationRelativeTo(null);
                     enfermeraVista.setVisible(true);
 
                     break;
 
                 case "enfermeraMedicamentosCerrar":
                     enfermeraAdministrar.hide();
+                    enfermeraVista.setLocationRelativeTo(null);
                     enfermeraVista.setVisible(true);
 
                     break;
 
                 case "enfermeraBuscar":
                     enfermeraVista.hide();
+                    enfermeraBuscar.setLocationRelativeTo(null);
                     enfermeraBuscar.setVisible(true);
 
                     break;
@@ -214,12 +221,14 @@ public class controlador {
 
                 case "enfermeraBuscarCerrar":
                     enfermeraBuscar.hide();
+                    enfermeraVista.setLocationRelativeTo(null);
                     enfermeraVista.setVisible(true);
 
                     break;
 
                 case "enfermeraCerrar":
                     enfermeraVista.hide();
+                    view.setLocationRelativeTo(null);
                     view.setVisible(true);
 
                     break;
@@ -227,16 +236,19 @@ public class controlador {
                 //MEDICO
                 case "medicoBuscar":
                     medicoVista.hide();
+                    medicoBuscar.setLocationRelativeTo(null);
                     medicoBuscar.setVisible(true);
 
                     break;
 
                 case "medicoBuscarCerrar":
                     medicoBuscar.hide();
+                    medicoVista.setLocationRelativeTo(null);
                     medicoVista.setVisible(true);
 
                     break;
                 case "medicoPacientes":
+                    medicoPacientes.setLocationRelativeTo(null);
                     medicoPacientes.setVisible(true);
                     medicoVista.hide();
 
@@ -244,12 +256,14 @@ public class controlador {
 
                 case "medicoPacientesCerrar":
                     medicoPacientes.hide();
+                    medicoVista.setLocationRelativeTo(null);
                     medicoVista.setVisible(true);
 
                     break;
 
                 case "medicoCerrar":
                     medicoVista.hide();
+                    view.setLocationRelativeTo(null);
                     view.setVisible(true);
 
                     break;
