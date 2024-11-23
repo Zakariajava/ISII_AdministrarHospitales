@@ -7,8 +7,6 @@ package enfermera;
 import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.DefaultListModel;
-import javax.swing.JList;
-import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import pacientes.Paciente;
 
