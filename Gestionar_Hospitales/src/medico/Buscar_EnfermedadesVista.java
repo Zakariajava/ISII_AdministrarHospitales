@@ -5,6 +5,11 @@
 package medico;
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -15,9 +20,18 @@ public class Buscar_EnfermedadesVista extends javax.swing.JFrame {
     /**
      * Creates new form Buscar_EnfermedadesVista
      */
+    private List<String> enfermedades; // Lista completa de enfermedades
+
     public Buscar_EnfermedadesVista() {
         initComponents();
         ATRAS.setActionCommand("medicoBuscarCerrar");
+        ENFERMEDAD.addKeyListener(new KeyAdapter() {
+        @Override
+        public void keyReleased(KeyEvent e) {
+            String filtro = ENFERMEDAD.getText();
+            actualizarLista(filtrarEnfermedades(filtro));
+        }
+        });
     }
 
     /**
@@ -162,9 +176,23 @@ public class Buscar_EnfermedadesVista extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void setActionListener(ActionListener actionListener) {
-
         ATRAS.addActionListener(actionListener);
-
     }
+    public void setEnfermedades(List<String> enfermedades) {
+        this.enfermedades = enfermedades;
+        actualizarLista(enfermedades); // Mostrar todas inicialmente
+    }
+    private List<String> filtrarEnfermedades(String filtro) {
+        return enfermedades.stream()
+                .filter(e -> e.toLowerCase().contains(filtro.toLowerCase()))
+                .collect(Collectors.toList());
+    }
+    private void actualizarLista(List<String> enfermedadesFiltradas) {
+        DefaultListModel<String> model = new DefaultListModel<>();
+        enfermedadesFiltradas.forEach(model::addElement);
+        jList1.setModel(model);
+}
+
+  
 
 }

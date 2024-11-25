@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -62,7 +63,22 @@ public class controlador {
         this.medicoPacientes = medicoPacientes;
         this.medicoBuscar = medicoBuscar;
         this.verHistorialPaciente = verHistorialPaciente;
+        
+        List<String> listaEnfermedades = new ArrayList<>();
+        listaEnfermedades.add("Cáncer");
+        listaEnfermedades.add("Diabetes");
+        listaEnfermedades.add("Hipertensión");
+        listaEnfermedades.add("Gripe");
+        listaEnfermedades.add("Covid-19");
+        listaEnfermedades.add("Asma");
+        listaEnfermedades.add("Artritis");
+        listaEnfermedades.add("Eczema");
+        listaEnfermedades.add("Lupus");
+        listaEnfermedades.add("Insuficiencia Renal");
 
+
+        medicoBuscar.setEnfermedades(listaEnfermedades);
+        
         ControladorActionListener onlyModelActionListener = new ControladorActionListener();
 
         this.view.setActionListener(onlyModelActionListener);
