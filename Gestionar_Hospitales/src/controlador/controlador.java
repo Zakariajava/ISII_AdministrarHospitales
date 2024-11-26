@@ -62,23 +62,8 @@ public class controlador {
         this.medicoVista = medicoVista;
         this.medicoPacientes = medicoPacientes;
         this.medicoBuscar = medicoBuscar;
-        this.verHistorialPaciente = verHistorialPaciente;
-        
-        List<String> listaEnfermedades = new ArrayList<>();
-        listaEnfermedades.add("Cáncer");
-        listaEnfermedades.add("Diabetes");
-        listaEnfermedades.add("Hipertensión");
-        listaEnfermedades.add("Gripe");
-        listaEnfermedades.add("Covid-19");
-        listaEnfermedades.add("Asma");
-        listaEnfermedades.add("Artritis");
-        listaEnfermedades.add("Eczema");
-        listaEnfermedades.add("Lupus");
-        listaEnfermedades.add("Insuficiencia Renal");
-
-
-        medicoBuscar.setEnfermedades(listaEnfermedades);
-        
+        this.verHistorialPaciente = verHistorialPaciente;      
+     
         ControladorActionListener onlyModelActionListener = new ControladorActionListener();
 
         this.view.setActionListener(onlyModelActionListener);

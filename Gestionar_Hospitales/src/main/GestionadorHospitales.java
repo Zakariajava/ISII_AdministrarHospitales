@@ -18,6 +18,7 @@ import medico.MedicoVista;
 import medico.Ver_PacientesVista;
 import medico.VerHistorialPaciente;
 import pacientes.Paciente;
+import enfermedades.Enfermedad;
 
 /**
  *
@@ -30,6 +31,7 @@ public class GestionadorHospitales {
      */
     private static List<Medicamentos> medicamentos = new ArrayList<>();
     private static List<Paciente> pacientes = new ArrayList<>();
+    private static List<Enfermedad> enfermedades = new ArrayList<>();
 
     public static void main(String[] args) {
 
@@ -79,7 +81,6 @@ public class GestionadorHospitales {
         Medicamentos azitromicina = new Medicamentos("Azitromicina", 140, "Infección", "Antibiótico para infecciones respiratorias y de piel.");
         Medicamentos hidrocortisona = new Medicamentos("Hidrocortisona", 60, "Inflamación", "Reduce la inflamación y alivia las irritaciones cutáneas.");
         Medicamentos metformina = new Medicamentos("Metformina", 130, "Diabetes", "Ayuda a controlar los niveles de azúcar en la sangre.");
-
         medicamentos.add(paracetamol);
         medicamentos.add(ibuprofeno);
         medicamentos.add(frenadol);
@@ -95,6 +96,29 @@ public class GestionadorHospitales {
         medicamentos.add(azitromicina);
         medicamentos.add(hidrocortisona);
         medicamentos.add(metformina);
+        //ENFERMEDADES
+
+        Enfermedad cancer = new Enfermedad("Cáncer", "Crecimiento descontrolado de células anormales en el cuerpo.", "Quimioterapia, radioterapia, cirugía.", "Cisplatino", "50 mg/m² cada 21 días");
+        Enfermedad diabetes = new Enfermedad("Diabetes", "Enfermedad metabólica que causa niveles altos de azúcar en la sangre.", "Insulina, dieta controlada, ejercicio.", "Insulina Glargina", "10-20 unidades al día");
+        Enfermedad hipertension = new Enfermedad("Hipertensión", "Presión arterial elevada de manera crónica.", "Medicamentos antihipertensivos, dieta baja en sodio, ejercicio.", "Losartán", "50 mg al día");
+        Enfermedad gripe = new Enfermedad("Gripe", "Infección viral que afecta las vías respiratorias.", "Reposo, hidratación, medicamentos para fiebre y dolor.", "Paracetamol", "500 mg cada 8 horas");
+        Enfermedad covid19 = new Enfermedad("Covid-19", "Infección viral causada por el coronavirus SARS-CoV-2.", "Vacunación, antivirales, aislamiento, oxígeno suplementario en casos graves.", "Remdesivir", "200 mg el primer día, luego 100 mg diarios durante 5-10 días");
+        Enfermedad asma = new Enfermedad("Asma", "Condición crónica que causa inflamación y estrechamiento de las vías respiratorias.", "Inhaladores, corticosteroides, evitar desencadenantes.", "Salbutamol", "100 mcg por inhalación, según necesidad");
+        Enfermedad artritis = new Enfermedad("Artritis", "Inflamación de las articulaciones que causa dolor y rigidez.", "Analgésicos, fisioterapia, medicamentos antiinflamatorios.", "Ibuprofeno", "400 mg cada 8 horas");
+        Enfermedad eczema = new Enfermedad("Eczema", "Enfermedad crónica de la piel que causa enrojecimiento, picazón y sequedad.", "Hidratantes, corticosteroides tópicos, evitar irritantes.", "Hidrocortisona", "Aplicar una capa fina dos veces al día");
+        Enfermedad lupus = new Enfermedad("Lupus", "Enfermedad autoinmune que puede afectar múltiples órganos del cuerpo.", "Inmunosupresores, corticosteroides, manejo de síntomas específicos.", "Prednisona", "5-60 mg al día, según indicación médica");
+        Enfermedad insuficienciaRenal = new Enfermedad("Insuficiencia Renal", "Pérdida de la función renal que afecta la eliminación de desechos del cuerpo.", "Diálisis, trasplante de riñón, manejo de enfermedades subyacentes.", "Eritropoyetina", "50-150 UI/kg, 3 veces por semana");
+        enfermedades.add(cancer);
+        enfermedades.add(diabetes);
+        enfermedades.add(hipertension);
+        enfermedades.add(gripe);
+        enfermedades.add(covid19);
+        enfermedades.add(asma);
+        enfermedades.add(artritis);
+        enfermedades.add(eczema);
+        enfermedades.add(lupus);
+        enfermedades.add(insuficienciaRenal);
+
         //HISTORIALES
         HistorialMedico historialPepe = new HistorialMedico();
         historialPepe.agregarVisita("2024-01-15", "Revisión general", "Todo normal");
@@ -125,7 +149,7 @@ public class GestionadorHospitales {
 
         medicoPacientes.mostrarPacientes(pacientes);
         enfermeraAdministrar.mostrarMedicamentos(medicamentos);
-
+        medicoBuscar.getEnfermdedades(enfermedades);
         model.agregarPaciente(pacientes);
     }
 

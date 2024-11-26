@@ -1,9 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package medico;
 
+import enfermedades.Enfermedad;
+import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -11,27 +9,22 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javax.swing.DefaultListModel;
 
-/**
- *
- * @author Zakaria
- */
 public class Buscar_EnfermedadesVista extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Buscar_EnfermedadesVista
-     */
-    private List<String> enfermedades; // Lista completa de enfermedades
+    private List<Enfermedad> enfermedades;
 
     public Buscar_EnfermedadesVista() {
         initComponents();
         ATRAS.setActionCommand("medicoBuscarCerrar");
-        ENFERMEDAD.addKeyListener(new KeyAdapter() {
-        @Override
-        public void keyReleased(KeyEvent e) {
-            String filtro = ENFERMEDAD.getText();
-            actualizarLista(filtrarEnfermedades(filtro));
-        }
+        buscar.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+                actualizarLista(buscar.getText());
+            }
         });
+
+        listaEnfermedades.addListSelectionListener(event -> setTexto(encontrarDescripcion(enfermedades, listaEnfermedades.getSelectedValue())));
     }
 
     /**
@@ -44,15 +37,16 @@ public class Buscar_EnfermedadesVista extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        ENFERMEDAD = new javax.swing.JTextField();
+        buscar = new javax.swing.JTextField();
         ATRAS = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        listaEnfermedades = new javax.swing.JList<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        descripcion = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(32, 35, 35));
-        setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
         setSize(new java.awt.Dimension(800, 600));
 
@@ -68,16 +62,12 @@ public class Buscar_EnfermedadesVista extends javax.swing.JFrame {
 
         jLabel1.setText("Nombre Enfermedad:");
 
-        jList1.setBorder(null);
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Enfermedad1", "Enfermedad2", "Enfermedad3", "Enfermedad4", "Enfermedad5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jList1.setToolTipText("");
-        jList1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jScrollPane2.setViewportView(jList1);
+        listaEnfermedades.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listaEnfermedades.setToolTipText("");
+        listaEnfermedades.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane2.setViewportView(listaEnfermedades);
+
+        jScrollPane1.setViewportView(descripcion);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -92,9 +82,12 @@ public class Buscar_EnfermedadesVista extends javax.swing.JFrame {
                         .addGap(38, 38, 38)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(ENFERMEDAD, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -103,10 +96,12 @@ public class Buscar_EnfermedadesVista extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ENFERMEDAD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(ATRAS)
                 .addContainerGap())
         );
@@ -115,9 +110,7 @@ public class Buscar_EnfermedadesVista extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 34, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 652, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,31 +161,52 @@ public class Buscar_EnfermedadesVista extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ATRAS;
-    private javax.swing.JTextField ENFERMEDAD;
+    private javax.swing.JTextField buscar;
+    private javax.swing.JTextPane descripcion;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JList<String> listaEnfermedades;
     // End of variables declaration//GEN-END:variables
 
     public void setActionListener(ActionListener actionListener) {
         ATRAS.addActionListener(actionListener);
     }
-    public void setEnfermedades(List<String> enfermedades) {
-        this.enfermedades = enfermedades;
-        actualizarLista(enfermedades); // Mostrar todas inicialmente
-    }
-    private List<String> filtrarEnfermedades(String filtro) {
-        return enfermedades.stream()
-                .filter(e -> e.toLowerCase().contains(filtro.toLowerCase()))
-                .collect(Collectors.toList());
-    }
-    private void actualizarLista(List<String> enfermedadesFiltradas) {
-        DefaultListModel<String> model = new DefaultListModel<>();
-        enfermedadesFiltradas.forEach(model::addElement);
-        jList1.setModel(model);
-}
 
-  
+    public void setTexto(String texto) {
+
+        descripcion.setText(texto);
+
+    }
+
+    public void actualizarLista(String enfermedad) {
+        DefaultListModel<String> model = new DefaultListModel<>();
+
+        for (int i = 0; i < enfermedades.size(); i++) {
+            if (enfermedades.get(i).getNombre().toLowerCase().contains(enfermedad.toLowerCase())) {
+                model.addElement(enfermedades.get(i).getNombre());
+            }
+        }
+
+        listaEnfermedades.setModel(model);
+    }
+
+    public void getEnfermdedades(List<Enfermedad> enfermedades) {
+        this.enfermedades = enfermedades;
+    }
+
+    public String encontrarDescripcion(List<Enfermedad> enfermedades, String nombre) {
+        for (int i = 0; i < enfermedades.size(); i++) {
+            if (enfermedades.get(i).getNombre().equals(nombre)) {
+                String descripcion = "Descripción: " + enfermedades.get(i).getDescripcion() + "\n"
+                        + "Tratamiento: " + enfermedades.get(i).getTratamiento() + "\n"
+                        + "Medicamento: " + enfermedades.get(i).getMedicamento() + "\n"
+                        + "Dosis: " + enfermedades.get(i).getDosis();
+                return descripcion;
+            }
+        }
+        return "Enfermedad no encontrada.";
+    }
 
 }
