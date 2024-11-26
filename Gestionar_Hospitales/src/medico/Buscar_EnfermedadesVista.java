@@ -50,9 +50,18 @@ public class Buscar_EnfermedadesVista extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(800, 600));
 
-        jPanel1.setBackground(new java.awt.Color(211, 211, 211));
+        jPanel1.setBackground(new java.awt.Color(60, 60, 65));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 600));
 
+        buscar.setBackground(new java.awt.Color(102, 102, 102));
+        buscar.setForeground(new java.awt.Color(255, 255, 255));
+        buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarActionPerformed(evt);
+            }
+        });
+
+        ATRAS.setBackground(new java.awt.Color(126, 87, 194));
         ATRAS.setText("ATRAS");
         ATRAS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,13 +69,19 @@ public class Buscar_EnfermedadesVista extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setBackground(new java.awt.Color(126, 87, 194));
+        jLabel1.setForeground(new java.awt.Color(126, 87, 194));
         jLabel1.setText("Nombre Enfermedad:");
 
+        listaEnfermedades.setBackground(new java.awt.Color(102, 102, 102));
+        listaEnfermedades.setForeground(new java.awt.Color(255, 255, 255));
         listaEnfermedades.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         listaEnfermedades.setToolTipText("");
         listaEnfermedades.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane2.setViewportView(listaEnfermedades);
 
+        descripcion.setBackground(new java.awt.Color(102, 102, 102));
+        descripcion.setForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(descripcion);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -123,6 +138,10 @@ public class Buscar_EnfermedadesVista extends javax.swing.JFrame {
     private void ATRASActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ATRASActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ATRASActionPerformed
+
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarActionPerformed
 
     /**
      * @param args the command line arguments
